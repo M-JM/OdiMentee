@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "odibuddy-bb12a": {
+      "hosting": {
+        "app": [
+          "odibuddy-bb12a"
+        ]
+      }
+    }
+  }
+}

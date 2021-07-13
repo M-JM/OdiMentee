@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <div class="logoContainer">
+      <h1>OdiMentee</h1>
+      <img alt="logo" src="../../assets/LogoLogin.png" />
+    </div>
+    <div class="item">
+      <label>Gebruikersnaam</label>
+      <ion-input type="text" [(ngModel)]="gebruikersnaam"></ion-input>
+    </div>
+    <div class="item">
+      <label>Wachtwoord</label>
+      <ion-input type="password" [(ngModel)]="wachtwoord"></ion-input>
+    </div>
+    <div class="item">
+      <span>{{errorMessage}}</span>
+    </div>
+    <div class="item">
+      <ion-button (click)="aanmelden()">Aanmelden</ion-button>
+      <ion-button (click)="mentor()">Ga naar mentor</ion-button>
+      <ion-button (click)="mentee()">Ga naar mentee</ion-button>
+    </div>
+    <router-link [routerLink]="['/newAccount']">Maak account</router-link>
+  </div>
+</ion-content>

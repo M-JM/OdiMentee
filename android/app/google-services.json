@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "142235172066",
+    "firebase_url": "https://odibuddy-bb12a.firebaseio.com",
+    "project_id": "odibuddy-bb12a",
+    "storage_bucket": "odibuddy-bb12a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142235172066:android:d853819bba27a4e67ff2bb",
+        "android_client_info": {
+          "package_name": "be.odisee.OdiMentee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142235172066-6v08m1u45aci5fmvn4tguj8hnu6kcrfj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "be.odisee.OdiMentee",
+            "certificate_hash": "dd486d8331a3c858f22c598dcc2513a5b9dee4e2"
+          }
+        },
+        {
+          "client_id": "142235172066-22dqc1355b2sqahqs4sguh8v6m47j2qr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC09kHWk0OaGo0h6nenWMWMwPycWyqmuls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142235172066-22dqc1355b2sqahqs4sguh8v6m47j2qr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

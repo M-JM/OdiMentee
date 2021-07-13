@@ -1,0 +1,7 @@
+{
+  "name": "OdiMentee",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
