@@ -3,7 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: true,
+   firebaseConfig : {
+      apiKey: 'AIzaSyCezUq2TQEo1Ob7TY9byd0x8oID048tQzI',
+      authDomain: 'odibuddy-bb12a.firebaseapp.com',
+      databaseURL: 'https://odibuddy-bb12a.firebaseio.com',
+      projectId: 'odibuddy-bb12a',
+      storageBucket: 'odibuddy-bb12a.appspot.com',
+      messagingSenderId: '142235172066',
+      appId: '1:142235172066:web:bd21934d158a6ccf7ff2bb',
+      measurementId: 'G-W12Q2TNXTE'
+    }
+
 };
 
 /*

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Maak Account Aan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input type="email" placeholder="jan.janssens@odisee.be" formControlName="email"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">voornaam</ion-label>
+    <ion-input placeholder="Jan" formControlName="firstName"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">familienaam</ion-label>
+    <ion-input placeholder="Jannsens" formControlName="lastName"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Password</ion-label>
+    <ion-input type="password" formControlName="password"></ion-input>
+  </ion-item>
+
+
+  <ion-button expand="block" type="submit" class="ion-padding-horizontal ion-margin-vertical"
+  color="primary" [disabled]="!registerForm.valid">
+<ion-icon name="checkmark" slot="end"></ion-icon>
+Register
+</ion-button>
+</form>
+</ion-content>
