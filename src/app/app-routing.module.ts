@@ -7,20 +7,18 @@ const redirectLoggedInUserTo = () => redirectLoggedInTo(['loggedIn']);
 
 
 const routes: Routes = [
-  {path:'',redirectTo:'register', pathMatch:'full'},
+  {path:'',redirectTo:'login', pathMatch:'full'},
   {
-    path: 'loggedIn',
+    path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
-    ...canActivate(redirectUnauthorizedToLogin)
-  },
-  {
-    path: 'login',
-    loadChildren: () => import('./login/login.component').then(m => m.LoginComponent),
-    ...canActivate(redirectLoggedInUserTo)
   },
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   }
 ];
 @NgModule({

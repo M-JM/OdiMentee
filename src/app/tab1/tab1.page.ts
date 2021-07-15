@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-tab1',
@@ -9,14 +10,15 @@ import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 export class Tab1Page implements OnInit {
 userInfo = null;
 
-  constructor() {
+  constructor(private auth: AuthService) {
   }
 
   ngOnInit() {
     GoogleAuth.init();
   }
 
-  test(){
+  logout(){
+    this.auth.signOut();
     console.log('testing');
   }
 
