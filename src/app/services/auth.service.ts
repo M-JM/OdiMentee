@@ -1,18 +1,37 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { firebase } from '@firebase/app';
 import '@firebase/firestore';
-import { from, Observable, of } from 'rxjs';
-import { take, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, from, Observable, of } from 'rxjs';
+import { take, switchMap, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor(private afAuth: AngularFireAuth,private db: AngularFirestore, private router: Router) { }
+  user: Observable<any>;
+  currentUser = new BehaviorSubject(null);
+  constructor(private afAuth: AngularFireAuth,private db: AngularFirestore, private router: Router) {
+    this.user = this.afAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.db.doc(`users/${user.uid}`).valueChanges().pipe(
+            take(1),
+            tap(data => {
+              data['id'] = user.uid;
+              this.currentUser.next(data);
+            })
+          );
+        } else {
+          this.currentUser.next(null);
+          return of(null);
+        }
+      })
+    );
+   }
 
   signUp(credentials) {
     console.log('tried to create user');

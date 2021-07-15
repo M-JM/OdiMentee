@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo} from '@angular/fire/auth-guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['register']);
 const redirectLoggedInUserTo = () => redirectLoggedInTo(['loggedIn']);
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    canActivate: [AuthGuard],
+    data: {
+      role: 'USER'
+    }
   },
   {
     path: 'register',
