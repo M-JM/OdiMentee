@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo} from '@angular/fire/auth-guard';
 import { AuthGuard } from './guards/auth.guard';
+import { IntroGuard } from './guards/intro.guard';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['register']);
 const redirectLoggedInUserTo = () => redirectLoggedInTo(['loggedIn']);
@@ -15,7 +16,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       role: 'USER'
-    }
+    },
+    canLoad: [IntroGuard]
   },
   {
     path: 'register',
@@ -24,6 +26,10 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'intro',
+    loadChildren: () => import('./pages/intro/intro.module').then( m => m.IntroPageModule)
   }
 ];
 @NgModule({

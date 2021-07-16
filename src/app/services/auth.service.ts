@@ -6,19 +6,25 @@ import { Router } from '@angular/router';
 import { firebase } from '@firebase/app';
 import '@firebase/firestore';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
-import { take, switchMap, tap } from 'rxjs/operators';
+import { take, switchMap, tap, pluck } from 'rxjs/operators';
+import { User } from './user.model';
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  user: Observable<any>;
-  currentUser = new BehaviorSubject(null);
+
+  user$: Observable<User>;
+  currentUser = new BehaviorSubject<User>(null);
+  private x: User;
   constructor(private afAuth: AngularFireAuth,private db: AngularFirestore, private router: Router) {
-    this.user = this.afAuth.authState.pipe(
+    this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.db.doc(`users/${user.uid}`).valueChanges().pipe(
+          return this.db.doc<User>(`users/${user.uid}`).valueChanges().pipe(
             take(1),
             tap(data => {
               data['id'] = user.uid;
@@ -26,11 +32,13 @@ export class AuthService {
             })
           );
         } else {
+          console.log('i was null and thus it doesn work');
           this.currentUser.next(null);
           return of(null);
         }
       })
     );
+    console.log('from Constr', this.user$);
    }
 
   signUp(credentials) {
@@ -41,6 +49,7 @@ export class AuthService {
         lastName: credentials.lastName,
         email: data.user.email,
         role: 'USER',
+        hasCompletedIntro: false,
         permissions: [],
         created: firebase.firestore.FieldValue.serverTimestamp()
       }));
@@ -67,5 +76,16 @@ export class AuthService {
     });
   }
 
+  resetPw(email) {
+    return this.afAuth.sendPasswordResetEmail(email);
+  }
+
+  setUser(x: User){
+  return this.x = x;
+  }
+
+  hasSeenIntro(): any {
+  return this.x.hasCompletedIntro;
+  }
 
 }
