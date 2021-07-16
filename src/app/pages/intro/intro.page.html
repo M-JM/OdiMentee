@@ -1,20 +1,42 @@
-<ion-content>
-  <ion-slides pager="true">
- 
-    <!-- Slide 1 -->
-    <ion-slide>
-      <ion-text color="light">
-     
-        <ion-button  fill="outline" color="light">Next</ion-button>
-      </ion-text>
-    </ion-slide>
- 
-    <!-- Slide 2 -->
-    <ion-slide>
-      <ion-text color="light">
-        <ion-button  fill="outline" color="light">Start</ion-button>
-      </ion-text>
-    </ion-slide>
- 
-  </ion-slides>
+<ion-content class="forms-validations-content">
+
+        <ion-content padding>
+          
+            <form class="validations-form" [formGroup]="introForm1" (ngSubmit)="onSubmit(introForm1.value)">
+              <ion-list class="inputs-list" lines="full">
+                <ion-list-header>
+                  <ion-label class="header-title">Profiel opstellen</ion-label>
+                </ion-list-header>
+
+
+                <ion-item class="input-item item-label-floating">
+                  <ion-label position="floating">talen</ion-label>
+                  <ion-select formControlName="talen" cancelText="Cancel" okText="OK">
+                    <ion-select-option *ngFor="let taal of talen" [value]="taal">{{ taal }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+
+                <ion-item class="input-item item-label-floating">
+                  <ion-label position="floating">opleidingen</ion-label>
+                  <ion-select formControlName="opleidingen" cancelText="Cancel" okText="OK">
+                    <ion-select-option *ngFor="let opleiding of opleidingen" [value]="opleiding">{{ opleiding }}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+                <ion-item class="input-item item-label-floating">
+                  <ion-label position="floating">opleidingenGraad</ion-label>
+                  <ion-select formControlName="opleidingenGraad" cancelText="Cancel" okText="OK">
+                    <ion-select-option *ngFor="let graad of opleidingenGraad" [value]="graad">{{ graad }}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+              <ion-button class="submit-btn" type="submit" expand="block" fill="outline"
+                [disabled]="!introForm1.valid">Submit</ion-button>
+            </form>
+         
+          <ion-button (click)="next()" fill="outline" color="light">Next</ion-button>
+  
 </ion-content>
