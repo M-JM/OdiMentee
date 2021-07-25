@@ -1,21 +1,20 @@
 <ion-content class="forms-validations-content">
-
+  <ion-slides pager="true">
+  <ion-slide>
         <ion-content padding>
           
-            <form class="validations-form" [formGroup]="introForm1" (ngSubmit)="onSubmit(introForm1.value)">
+            <form class="validations-form" [formGroup]="introForm1" (ngSubmit)="onSubmit()">
               <ion-list class="inputs-list" lines="full">
                 <ion-list-header>
                   <ion-label class="header-title">Profiel opstellen</ion-label>
                 </ion-list-header>
 
-
                 <ion-item class="input-item item-label-floating">
                   <ion-label position="floating">talen</ion-label>
-                  <ion-select formControlName="talen" cancelText="Cancel" okText="OK">
+                  <ion-select formControlName="talen">
                     <ion-select-option *ngFor="let taal of talen" [value]="taal">{{ taal }}</ion-select-option>
                   </ion-select>
                 </ion-item>
-
 
                 <ion-item class="input-item item-label-floating">
                   <ion-label position="floating">opleidingen</ion-label>
@@ -33,10 +32,38 @@
                   </ion-select>
                 </ion-item>
               </ion-list>
-              <ion-button class="submit-btn" type="submit" expand="block" fill="outline"
-                [disabled]="!introForm1.valid">Submit</ion-button>
             </form>
-         
-          <ion-button (click)="next()" fill="outline" color="light">Next</ion-button>
-  
+            <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+
+          </ion-content>
+        </ion-slide>
+
+        <ion-slide>
+          <ion-content padding>
+            <p>test</p>
+              <form class="validations-form" [formGroup]="introForm2" (ngSubmit)="onSubmit2()">
+                
+                <ion-item class="input-item item-label-floating">
+                  <ion-label position="floating">Beschrijving</ion-label>
+                <ion-input type="text" placeholder="geef een korte beschrijving van jezelf" formControlName="beschrijving"></ion-input>
+                </ion-item>
+
+                <ion-item class="input-item item-label-floating">
+                  <ion-label position="floating">skills</ion-label>
+                  <ion-select multiple="true" formControlName="skills">
+                    <ion-select-option *ngFor="let skill of skills" [value]="skill" >{{ skill }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+
+                <ion-button class="submit-btn" type="submit" expand="block" fill="outline"
+                  [disabled]="!introForm2.valid || !introForm2.valid">Submit</ion-button>
+              </form>
+              <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+            </ion-content>  
+          </ion-slide>
+        
+
+
+        </ion-slides>
 </ion-content>

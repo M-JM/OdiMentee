@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { firebase } from '@firebase/app';
 import '@firebase/firestore';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
-import { take, switchMap, tap, pluck } from 'rxjs/operators';
+import { take, switchMap, tap, pluck, debounce } from 'rxjs/operators';
 import { User } from './user.model';
 
 
@@ -86,6 +86,17 @@ export class AuthService {
 
   hasSeenIntro(): any {
   return this.x.hasCompletedIntro;
+  }
+
+  async getUid(): Promise<any> {
+   return (await this.afAuth.currentUser).uid;
+  }
+
+  hasCompletedIntro(uid: any): any {
+    this.db.collection('users').doc(uid).update({
+      hasCompletedIntro: true
+    });
+    this.x.hasCompletedIntro = true;
   }
 
 }

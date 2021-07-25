@@ -16,7 +16,6 @@ import { User} from '../services/user.model';
 
 export class IntroGuard implements CanLoad {
 
-  profilex: User;
   hasSeenIntro: boolean;
   constructor(private router: Router, private auth: AuthService){ }
 
