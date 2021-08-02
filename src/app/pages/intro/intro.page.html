@@ -41,6 +41,20 @@
         <ion-slide>
           <ion-content padding>
             <p>test</p>
+            
+            <ion-button>
+            <input type="file" (change)="uploadProfileToFirebase($event)" id="file-input" accept="image/png, image/jpg, image/jpeg">
+            </ion-button>
+
+
+              <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+            </ion-content>  
+          </ion-slide>
+        
+
+        <ion-slide>
+          <ion-content padding>
+            <p>test</p>
               <form class="validations-form" [formGroup]="introForm2" (ngSubmit)="onSubmit2()">
                 
                 <ion-item class="input-item item-label-floating">

@@ -13,9 +13,10 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FileSizePipe } from './pipes/file-size.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FileSizePipe],
   entryComponents: [],
   imports: [BrowserModule,
   IonicModule.forRoot(),

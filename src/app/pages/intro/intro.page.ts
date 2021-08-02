@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Profile } from './../../services/profile.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -6,6 +7,8 @@ import { Router } from '@angular/router';
 import { AlertController, ToastController, LoadingController, IonSlides } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-intro',
@@ -22,19 +25,24 @@ export class IntroPage implements OnInit {
   opleidingenGraad: Array<string>;
   skills: Array<string>;
   userId: any;
+  fileName: string;
+  uploadFileName: any;
 
   introForm1: FormGroup;
   introForm2: FormGroup;
+  imageUpload: AngularFireUploadTask;
 
   constructor(private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
     private profileService: ProfileService,
     private authService: AuthService,
-    private afAuth: AngularFireAuth) { }
+    private afAuth: AngularFireAuth,
+    private angularFirestore: AngularFirestore,
+    private angularFireStorage: AngularFireStorage) {
+     }
 
   ngOnInit() {
-
     this.afAuth.authState.subscribe( user => {
       if (user) { this.userId = user.uid; }
     });
@@ -91,7 +99,7 @@ this.skills = [
       taalvoorkeur: this.introForm1.get('talen').value,
       beschrijving: this.introForm2.get('beschrijving').value,
       skills: this.introForm2.get('skills').value,
-      photo: 'test',
+      photo: this.uploadFileName,
       campus:'test',
       userId:this.userId
     };
@@ -108,6 +116,34 @@ this.skills = [
         console.log(err);
       });
     }
+  }
+
+  uploadProfileToFirebase(event){
+    const file = event.target.files;
+    console.log(file);
+    // eslint-disable-next-line no-var
+    var fileName = file[0];
+    console.log(fileName);
+
+    if(fileName.type.split('/')[0] !=='image'){
+      console.log('file is not an image');
+      return;
+    }
+
+    const path = `profilePictures/${new Date().getTime()}_${fileName.name}`;
+
+    // eslint-disable-next-line no-var
+    var fileRef = this.angularFireStorage.ref(path);
+    this.imageUpload = this.angularFireStorage.upload(path,fileName);
+
+    this.imageUpload.then( res => {
+      var imagefile = res.task.snapshot.ref.getDownloadURL();
+     imagefile.then( downloadableUrl => {
+       console.log('url', downloadableUrl);
+       this.uploadFileName = downloadableUrl;
+     });
+    });
+
   }
 
   }
