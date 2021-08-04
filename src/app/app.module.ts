@@ -14,17 +14,21 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FileSizePipe } from './pipes/file-size.pipe';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   declarations: [AppComponent, FileSizePipe],
   entryComponents: [],
   imports: [BrowserModule,
   IonicModule.forRoot(),
+  IonicStorageModule.forRoot(),
   AppRoutingModule,
   AngularFireModule.initializeApp(environment.firebaseConfig),
   AngularFireAuthModule,
   AngularFirestoreModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+
+
 ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

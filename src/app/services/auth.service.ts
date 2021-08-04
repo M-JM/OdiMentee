@@ -1,3 +1,4 @@
+import { StorageService } from './storage.service';
 /* eslint-disable @typescript-eslint/dot-notation */
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -8,7 +9,7 @@ import '@firebase/firestore';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { take, switchMap, tap, pluck, debounce } from 'rxjs/operators';
 import { User } from './user.model';
-
+import { Storage } from '@ionic/storage-angular';
 
 
 
@@ -20,7 +21,7 @@ export class AuthService {
   user$: Observable<User>;
   currentUser = new BehaviorSubject<User>(null);
   private x: User;
-  constructor(private afAuth: AngularFireAuth,private db: AngularFirestore, private router: Router) {
+  constructor(private afAuth: AngularFireAuth,private db: AngularFirestore, private router: Router, private storage: StorageService) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
@@ -81,6 +82,11 @@ export class AuthService {
   }
 
   setUser(x: User){
+    // eslint-disable-next-line no-var
+    var y = this.getUid().then( res => { console.log(res);
+      this.storage.set('id',res);});
+    console.log(y);
+    console.log(this.storage.get('id'));
   return this.x = x;
   }
 

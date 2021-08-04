@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
         console.log('User',user);
         const role = user.role;
         this.auth.setUser({
-          uid: user.uid,
+          key: user.key,
           created: user.created,
           firstName: user.firstName,
           lastName: user.lastName,

@@ -2,7 +2,7 @@ import { Timestamp } from 'rxjs';
 
 
 export interface User {
-uid: string;
+key: string;
 created: Timestamp<number>;
 firstName: string;
 hasCompletedIntro: boolean;
