@@ -1,18 +1,23 @@
-<ion-content class="firebase-listing-content">
-  <ion-list class="items-list" *ngIf="students?.length > 0">
-    <ion-item class="list-item" *ngFor="let student of students" [routerLink]="['/student-detail',student.userId]" tappable>
-      <ion-row class="user-row" >
-        <ion-col class="user-data-wrapper">
-          <div class="user-info">
-            <h3 class="user-name">
-              {{student.beschrijving}}
-            </h3>
-            <h5 class="user-age">
-              {{student.opleiding}}
-            </h5>
-          </div>
-        </ion-col>
-      </ion-row>
+<ion-content >
+  <ion-list *ngIf="students?.length > 0">
+    <ion-item  *ngFor="let student of students" [routerLink]="['/student-detail',student.userId]" tappable>
+            <ion-avatar style="background: #f2f2f2; margin-right: 10px;">
+              <ion-img [src]="student.photo"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2 style="margin-left: 5px;">
+                {{student.beschrijving}}
+              </h2>
+              <p style="margin-left: 5px;">
+                {{student.opleiding}}
+              </p>
+
+              <p class="ion-text-wrap">
+                <ion-chip *ngFor="let skill of student.skills | slice:0:10 "  disabled='true' size='small' mode='md'>
+                  <ion-label color="primary">{{skill}}</ion-label>
+                </ion-chip>
+              </p>
+            </ion-label>      
     </ion-item>
   </ion-list>
   <h3 *ngIf="students?.length === 0" class="empty-list-message">
