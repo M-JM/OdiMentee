@@ -1,0 +1,21 @@
+<ion-content class="firebase-listing-content">
+  <ion-list class="items-list" *ngIf="students?.length > 0">
+    <ion-item class="list-item" *ngFor="let student of students" [routerLink]="['/student-detail',student.userId]" tappable>
+      <ion-row class="user-row" >
+        <ion-col class="user-data-wrapper">
+          <div class="user-info">
+            <h3 class="user-name">
+              {{student.beschrijving}}
+            </h3>
+            <h5 class="user-age">
+              {{student.opleiding}}
+            </h5>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+  <h3 *ngIf="students?.length === 0" class="empty-list-message">
+    No users found for the selected filters.
+  </h3>
+</ion-content>

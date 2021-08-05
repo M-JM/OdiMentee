@@ -84,9 +84,7 @@ export class AuthService {
   setUser(x: User){
     // eslint-disable-next-line no-var
     var y = this.getUid().then( res => { console.log(res);
-      this.storage.set('id',res);});
-    console.log(y);
-    console.log(this.storage.get('id'));
+    this.storage.set('id',res);});
   return this.x = x;
   }
 

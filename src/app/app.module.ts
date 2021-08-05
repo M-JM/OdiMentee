@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FileSizePipe } from './pipes/file-size.pipe';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
+
 @NgModule({
   declarations: [AppComponent, FileSizePipe],
   entryComponents: [],
