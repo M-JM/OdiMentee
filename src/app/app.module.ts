@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FileSizePipe } from './pipes/file-size.pipe';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
   AngularFireAuthModule,
   AngularFirestoreModule,
   ReactiveFormsModule,
-
+  Ng2SearchPipeModule
 
 ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
