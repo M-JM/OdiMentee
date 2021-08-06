@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { StudentlistPageRoutingModule } from './studentlist-routing.module';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { StudentlistPage } from './studentlist.page';
 
@@ -13,7 +14,8 @@ import { StudentlistPage } from './studentlist.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    StudentlistPageRoutingModule
+    Ng2SearchPipeModule,
+    StudentlistPageRoutingModule,
   ],
   declarations: [StudentlistPage]
 })

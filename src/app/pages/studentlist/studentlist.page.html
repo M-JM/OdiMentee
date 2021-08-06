@@ -1,26 +1,51 @@
-<ion-content >
-  <ion-list *ngIf="students?.length > 0">
-    <ion-item  *ngFor="let student of students" [routerLink]="['/student-detail',student.userId]" tappable>
-            <ion-avatar style="background: #f2f2f2; margin-right: 10px;">
-              <ion-img [src]="student.photo"></ion-img>
-            </ion-avatar>
-            <ion-label>
-              <h2 style="margin-left: 5px;">
-                {{student.beschrijving}}
-              </h2>
-              <p style="margin-left: 5px;">
-                {{student.opleiding}}
-              </p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Zoek je ideale mentor
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-              <p class="ion-text-wrap">
-                <ion-chip *ngFor="let skill of student.skills | slice:0:10 "  disabled='true' size='small' mode='md'>
+<ion-content>
+
+  <ion-searchbar placeholder="Zoek een mentor" [(ngModel)]="term" animated="true"></ion-searchbar>
+
+
+  <ion-list *ngIf="(students | filter:term).length > 0">
+    <ion-item *ngFor="let student of students | filter:term" [routerLink]="['/student-detail',student.userId]" tappable>
+      <ion-grid>
+        <ion-row>
+
+          <ion-avatar style="background: #f2f2f2; margin-right: 5px;">
+            <ion-img [src]="student.photo"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2 style="margin-left: 5px;">
+              {{student.naam}}
+            </h2>
+            <p style="margin-left: 5px;">
+              {{student.opleiding}} - {{student.opleidingsfase}} jaar | campus {{student.campus}}
+            </p>
+            <p style="margin-left:5px;">
+              taal: {{student.taalvoorkeur}}
+            </p>
+          </ion-label>
+
+          <ion-col size="12" size-sm>
+            <div>
+              <p class="ion-text-wrap" style="margin-top: 2px; margin-bottom: 2px;">
+                <ion-chip *ngFor="let skill of student.skills | slice:0:10 " disabled='true' size='small' mode='md'>
                   <ion-label color="primary">{{skill}}</ion-label>
                 </ion-chip>
               </p>
-            </ion-label>      
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
     </ion-item>
   </ion-list>
-  <h3 *ngIf="students?.length === 0" class="empty-list-message">
-    No users found for the selected filters.
+  <h3 *ngIf="(students | filter:term).length === 0" class="empty-list-message">
+    Geen studenten gevonden met gekozen zoekterm
   </h3>
 </ion-content>
