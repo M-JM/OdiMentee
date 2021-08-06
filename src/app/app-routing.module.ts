@@ -46,6 +46,10 @@ const routes: Routes = [
   {
     path: ':student-detail/:id',
     loadChildren: () => import('./pages/student-detail/student-detail.module').then( m => m.StudentDetailPageModule)
+  },
+  {
+    path: 'invitation-modal',
+    loadChildren: () => import('./pages/invitation-modal/invitation-modal.module').then( m => m.InvitationModalPageModule)
   }
 ];
 @NgModule({

@@ -2,6 +2,8 @@
 /* eslint-disable no-var */
 import { ProfileService } from 'src/app/services/profile.service';
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { InvitationModalPage } from '../invitation-modal/invitation-modal.page';
 
 
 
@@ -20,7 +22,7 @@ export class ProfilePage implements OnInit {
   taalvoorkeur: any;
   userImage: any;
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService, private modalCtrl: ModalController) { }
 
   ngOnInit() {
 this.profileService.getid().then(
@@ -34,4 +36,7 @@ this.profileService.getid().then(
   });
 
 }
+
+
+
 }

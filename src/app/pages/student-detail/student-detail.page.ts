@@ -1,8 +1,10 @@
+import { ModalController } from '@ionic/angular';
 /* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable no-underscore-dangle */
 import { ProfileService } from 'src/app/services/profile.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { InvitationModalPage } from '../invitation-modal/invitation-modal.page';
 
 @Component({
   selector: 'app-student-detail',
@@ -19,7 +21,7 @@ export class StudentDetailPage implements OnInit {
   naam: any;
   private _entityId: any;
 
-  constructor(private profileService: ProfileService, private route: ActivatedRoute) { }
+  constructor(private profileService: ProfileService, private route: ActivatedRoute, private modalCtrl: ModalController) { }
 
   ngOnInit() {
     // eslint-disable-next-line no-underscore-dangle
@@ -34,5 +36,12 @@ export class StudentDetailPage implements OnInit {
      });
     });
   }
-
+  async openInvitation(){
+    console.log('triggered');
+    const modal = await this.modalCtrl.create({
+  component:InvitationModalPage,
+  cssClass: 'invitation-modal'
+    });
+    await modal.present();
+  }
 }
