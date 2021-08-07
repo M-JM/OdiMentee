@@ -32,8 +32,12 @@
   </div>
 </div>
 
-<div class="connect">
+<div class="connect" *ngIf="alreadySent === false">
   <ion-button (click)="openInvitation()">connect</ion-button>
+</div>
+
+<div class="connect" *ngIf="alreadySent === true">
+  <ion-button color="success" disabled (click)="openInvitation()">verzoek al verstuurd</ion-button>
 </div>
 
 <div class="navigation-bar">

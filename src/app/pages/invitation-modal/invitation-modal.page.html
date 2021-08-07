@@ -11,5 +11,20 @@
  
 <ion-content>
 
+  <form [formGroup]="invitationForm" (ngSubmit)="sendInvitation()">
+
+    <ion-item>
+      <ion-label>Verzoektekst</ion-label>
+      <ion-textarea rows="6" formControlName="verzoektekst">
+      </ion-textarea>
+    </ion-item>
+
+    <ion-button type="submit" expand="block"
+    [disabled]="!invitationForm.valid"
+    >
+    Stuur Verzoek
+    </ion-button>
+
+  </form>
  
 </ion-content>

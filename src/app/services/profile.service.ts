@@ -1,10 +1,7 @@
-import { Observable } from 'rxjs';
 import { StorageService } from './storage.service';
 import { Profile } from './profile.model';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
-import { take } from 'rxjs/operators';
 
 
 @Injectable({
