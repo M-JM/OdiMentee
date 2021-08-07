@@ -6,12 +6,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
   <ion-searchbar placeholder="Zoek een mentor" [(ngModel)]="term" animated="true"></ion-searchbar>
 
 
-  <ion-list *ngIf="(students | filter:term).length > 0">
+  <ion-list *ngIf="(students | filter:term).length > 0" style="margin-bottom: 40px;">
     <ion-item *ngFor="let student of students | filter:term" [routerLink]="['/student-detail',student.userId]" tappable>
       <ion-grid>
         <ion-row>

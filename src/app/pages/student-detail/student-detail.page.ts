@@ -58,16 +58,11 @@ export class StudentDetailPage implements OnInit {
   }
 
 checkInv(mentee, mentor){
-  console.log(mentor);
-  console.log(mentee);
+
   this.invitationService.checkInvitation(mentee,mentor).subscribe(res => {
     if(res.length > 0){
-      console.log(res);
-      console.log(res.length);
       this.alreadySent = true;
     }else{
-      console.log(res.length);
-      console.log(res);
       this.alreadySent = false;
     }
   });

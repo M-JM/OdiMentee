@@ -1,1 +1,43 @@
+ion-tabs {
 
+    // --------------Custom Semi Transparent & Rounded Tabs----------------------
+    ion-tab-bar {
+        position: absolute;
+        bottom: 0;
+        width: 100%;        
+        --background: transparent;
+        border-radius: 20px 20px 0 0;
+        --border: 0;
+        ion-tab-button {
+            --background:#396afc;
+            --color: grey;
+            --color-selected: black;
+            ion-icon {
+                font-size: 1.5rem;
+            }
+        }
+    }
+    ion-tab-button.profile {
+        margin-right: -1px;
+        border-top-left-radius: 20px;
+    }
+    ion-tab-button.tab1 {
+        margin-left: -1px;
+        border-top-right-radius: 20px;
+    }
+    svg {
+        width: 78px;
+        margin-top: 19px;
+        path {
+            fill: #396afc;
+        }
+    }
+    ion-fab {
+        ion-fab-button {
+            --background: linear-gradient(to bottom,#396afc, #2948ff);
+            ion-icon {
+                font-size: 2rem;
+            }
+        }
+    }
+}

@@ -13,11 +13,11 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     data: {
       role: 'USER'
     },
-   // canLoad: [IntroGuard]
+    canLoad: [IntroGuard]
   },
   {
     path: 'register',
@@ -39,10 +39,10 @@ const routes: Routes = [
     path: 'inbox',
     loadChildren: () => import('./pages/inbox/inbox.module').then( m => m.InboxPageModule)
   },
-  {
-    path: 'studentlist',
-    loadChildren: () => import('./pages/studentlist/studentlist.module').then( m => m.StudentlistPageModule)
-  },
+  // {
+  //   path: 'studentlist',
+  //   loadChildren: () => import('./pages/studentlist/studentlist.module').then( m => m.StudentlistPageModule)
+  // },
   {
     path: ':student-detail/:id',
     loadChildren: () => import('./pages/student-detail/student-detail.module').then( m => m.StudentDetailPageModule)
