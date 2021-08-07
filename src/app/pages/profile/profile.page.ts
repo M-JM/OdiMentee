@@ -21,6 +21,10 @@ export class ProfilePage implements OnInit {
   opleiding: any;
   taalvoorkeur: any;
   userImage: any;
+  campus: any;
+  opleidingsgraad: any;
+  naam: any;
+  skills: any;
 
   constructor(private profileService: ProfileService, private modalCtrl: ModalController) { }
 
@@ -32,6 +36,10 @@ this.profileService.getid().then(
        this.opleiding = data['opleiding'];
        this.taalvoorkeur = data['taalvoorkeur'];
        this.userImage = data['photo'];
+       this.campus = data['campus'];
+       this.naam = data['naam'];
+       this.opleidingsgraad=data['opleidingsfase'];
+       this.skills=data['skills'];
     });
   });
 
