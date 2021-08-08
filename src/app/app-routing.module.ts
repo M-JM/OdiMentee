@@ -50,6 +50,14 @@ const routes: Routes = [
   {
     path: 'invitation-modal',
     loadChildren: () => import('./pages/invitation-modal/invitation-modal.module').then( m => m.InvitationModalPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+  },
+  {
+    path: 'chatlist',
+    loadChildren: () => import('./pages/chatlist/chatlist.module').then( m => m.ChatlistPageModule)
   }
 ];
 @NgModule({

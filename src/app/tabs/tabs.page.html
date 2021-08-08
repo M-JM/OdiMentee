@@ -1,5 +1,5 @@
 <ion-tabs #tabs (ionTabsDidChange)="setCurrentTab($event)">
-  
+
   <ion-fab vertical="bottom" horizontal="center" translucent="true">
     <ion-fab-button>
       <ion-tab-button tab="studentlist">
@@ -8,25 +8,32 @@
     </ion-fab-button>
   </ion-fab>
 
-  
   <ion-tab-bar slot="bottom">
 
-    <ion-tab-button tab="tab1" class="tab1">
+    <ion-tab-button tab="tab1" class="">
       <ion-icon [name]="selectTab === 'tab1' ? 'home' : 'home-outline'"></ion-icon>
-     
     </ion-tab-button>
 
-    
-      <svg height="50" viewBox="0 0 100 50" width="100" xmlns="http://www.w3.org/2000/svg">
-      <path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" fill="purple"
-       >
+
+    <ion-tab-button tab="inbox" class="tab1">
+      <ion-icon [name]="selectTab === 'inbox' ? 'file-tray-full' : 'file-tray-full-outline'"></ion-icon>
+    </ion-tab-button>
+
+
+    <svg height="50" viewBox="0 0 100 50" width="100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" fill="purple">
       </path>
     </svg>
 
-    <ion-tab-button tab="profile" class="profile">
-      <ion-icon [name]="selectTab === 'profile' ? 'heart' : 'heart-outline'"></ion-icon>
-     
+    <ion-tab-button tab="chats" class="profile">
+      <ion-icon [name]="selectTab === 'chats' ? 'chatbubbles' : 'chatbubbles-outline'"></ion-icon>
     </ion-tab-button>
+
+
+    <ion-tab-button tab="profile" class="">
+      <ion-icon [name]="selectTab === 'profile' ? 'person-circle' : 'person-circle-outline'"></ion-icon>
+    </ion-tab-button>
+
   </ion-tab-bar>
 
 </ion-tabs>

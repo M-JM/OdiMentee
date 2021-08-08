@@ -20,6 +20,14 @@ const routes: Routes = [
         loadChildren: () => import('../pages/profile/profile.module').then(m => m.ProfilePageModule)
       },
       {
+        path: 'chats',
+        loadChildren: () => import('../pages/chatlist/chatlist.module').then(m => m.ChatlistPageModule)
+      },
+      {
+        path: 'inbox',
+        loadChildren: () => import('../pages/inbox/inbox.module').then(m => m.InboxPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/studentlist',
         pathMatch: 'full'
