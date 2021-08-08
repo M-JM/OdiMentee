@@ -47,7 +47,7 @@ export class StudentDetailPage implements OnInit {
   }
   async openInvitation(){
     console.log('triggered');
-    const modal = await this.modalCtrl.create({
+  const modal = await this.modalCtrl.create({
   component:InvitationModalPage,
   componentProps: {
     userId: this._entityId,

@@ -58,6 +58,10 @@ const routes: Routes = [
   {
     path: 'chatlist',
     loadChildren: () => import('./pages/chatlist/chatlist.module').then( m => m.ChatlistPageModule)
+  },
+  {
+    path: 'invitation-reply-modal',
+    loadChildren: () => import('./pages/invitation-reply-modal/invitation-reply-modal.module').then( m => m.InvitationReplyModalPageModule)
   }
 ];
 @NgModule({

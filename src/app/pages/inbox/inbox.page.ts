@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { InvitationsService } from 'src/app/services/invitations.service';
 import { ProfileService } from 'src/app/services/profile.service';
+import { InvitationReplyModalPage } from '../invitation-reply-modal/invitation-reply-modal.page';
 
 @Component({
   selector: 'app-inbox',
@@ -26,6 +27,19 @@ export class InboxPage implements OnInit {
         console.log(this.invitations);
       });
     });
+  }
+
+  async openInvitation(id: string){
+    console.log(id);
+    console.log('triggered');
+  const modal = await this.modalCtrl.create({
+  component:InvitationReplyModalPage,
+  componentProps: {
+  invitationId: id,
+  },
+  cssClass: 'invitation-reply-modal'
+    });
+    await modal.present();
   }
 
 }

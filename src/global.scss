@@ -39,6 +39,20 @@
 padding: 25px;
 }
 
+.invitation-reply-modal{
+    --backdrop-opacity: 0.8 !important;
+
+    .modal-wrapper {
+      --height: 50% !important;
+      --padding: 25px;
+      //position: absolute;
+    }
+
+--border-radius: 10px;
+
+padding: 25px;
+}
+
 /* ion-content {
     --background: #195875;
     --ion-item-background: transparent;

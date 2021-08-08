@@ -1,3 +1,5 @@
+/* eslint-disable object-shorthand */
+/* eslint-disable quote-props */
 import { Invitation } from './invitation.model';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -24,7 +26,7 @@ getInvitation(id: string){
 
 getAllInvitations(id: string){
   return this.db.collection(`invitations`, ref =>ref.where('mentor','==',id).where('status','==','pending'))
-  .valueChanges()
+  .valueChanges({idField: 'id'})
   .pipe(
     leftJoinDocument(this.db,'mentee','profiles'),
     shareReplay(1)
@@ -34,6 +36,13 @@ getAllInvitations(id: string){
 update(id: string, invitation: Invitation){
     return this.db.collection('invitations').doc(id).update(invitation);
   }
+
+updateReply(id: string, weigeringstekst: string, status: string ){
+  return this.db.collection('invitations').doc(id).update({
+    'status': status,
+    'weigertekst': weigeringstekst
+  });
+}
 
 async getid() {
     // eslint-disable-next-line no-var

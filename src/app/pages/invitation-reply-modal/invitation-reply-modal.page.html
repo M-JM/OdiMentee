@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>My Invitation</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+
+
+ <ion-button color='danger'(click)="rejection()" [disabled]="!isActive">
+   weiger
+ </ion-button>
+  <ion-button color='success' (click)="accept()" [disabled]="!isActive">
+   Bevestig
+  </ion-button>
+
+   <div *ngIf='isRejected'>
+    <form [formGroup]="replyForm" (ngSubmit)="reject()">
+  
+      <ion-item>
+        <ion-label>Weigeren</ion-label>
+        <ion-textarea rows="6" formControlName="verzoektekst" placeholder='Laat je medestudent iets weten'> 
+        </ion-textarea>
+      </ion-item>
+  
+      <ion-button color='danger' type="submit" expand="block"
+      >
+      weiger
+      </ion-button>
+  
+    </form>
+  </div>
+
+</ion-content>

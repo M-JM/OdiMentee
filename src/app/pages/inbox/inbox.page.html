@@ -10,7 +10,7 @@
 
   
   <ion-list *ngIf="(invitations)?.length > 0" style="margin-bottom: 40px;">
-    <ion-item *ngFor="let invitation of invitations" [routerLink]="[]" tappable>
+    <ion-item *ngFor="let invitation of invitations" (click)='openInvitation(invitation.id)' >
       <ion-grid>
         <ion-row>
 
