@@ -2,6 +2,8 @@ import { StorageService } from './storage.service';
 import { Profile } from './profile.model';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 
 @Injectable({
@@ -18,6 +20,14 @@ create(profile: Profile){
 getProfile(userId: string){
   return this.db.doc(`profiles/${userId}`).valueChanges();
 }
+
+// the below function is unnecessary and just serves to help me with being able to navigate prop.
+// should change the above one and see if nothing else breaks.
+
+getProfileAsObservable(userId: string){
+  return this.db.doc(`profiles/${userId}`).valueChanges().pipe(take(1)) as Observable<Profile>;
+}
+
 
 getProfiles(){
   return this.db.collection('profiles').valueChanges();

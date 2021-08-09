@@ -9,7 +9,6 @@ import '@firebase/firestore';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { take, switchMap, tap, pluck, debounce } from 'rxjs/operators';
 import { User } from './user.model';
-import { Storage } from '@ionic/storage-angular';
 
 
 
@@ -82,9 +81,11 @@ export class AuthService {
   }
 
   setUser(x: User){
+    console.log(x);
     // eslint-disable-next-line no-var
     var y = this.getUid().then( res => { console.log(res);
     this.storage.set('id',res);});
+    console.log(x);
   return this.x = x;
   }
 

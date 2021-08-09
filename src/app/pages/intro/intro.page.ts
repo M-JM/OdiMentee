@@ -101,6 +101,7 @@ this.skills = [
       skills: this.introForm2.get('skills').value,
       photo: this.uploadFileName,
       campus:'test',
+      role:'mentee',
       userId:this.userId
     };
 

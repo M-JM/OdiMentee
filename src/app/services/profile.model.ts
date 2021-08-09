@@ -8,4 +8,5 @@ export interface Profile {
     photo: string;
     skills: Array<string>;
     taalvoorkeur: string;
+    role: string;
 };
