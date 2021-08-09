@@ -10,7 +10,7 @@
 
   
   <ion-list *ngIf="(invitations)?.length > 0" style="margin-bottom: 40px;">
-    <ion-item *ngFor="let invitation of invitations" (click)='openInvitation(invitation.id)' >
+    <ion-item *ngFor="let invitation of invitations" (click)='openInvitation(invitation.id, invitation.mentor, invitation.mentee.userId)' >
       <ion-grid>
         <ion-row>
 

@@ -27,7 +27,7 @@ createChat(mentee,mentor){
     mentor,
     status: 'active',
   };
-this.db.collection('chats').add(data);
+return this.db.collection('chats').add(data);
 }
 
 sendMessage(chatid,message, userid){

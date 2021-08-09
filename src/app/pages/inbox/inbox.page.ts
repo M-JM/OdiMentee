@@ -29,13 +29,13 @@ export class InboxPage implements OnInit {
     });
   }
 
-  async openInvitation(id: string){
-    console.log(id);
-    console.log('triggered');
+  async openInvitation(id: string, mentor: string,mentee: string){
   const modal = await this.modalCtrl.create({
   component:InvitationReplyModalPage,
   componentProps: {
   invitationId: id,
+  mentee,
+  mentor
   },
   cssClass: 'invitation-reply-modal'
     });

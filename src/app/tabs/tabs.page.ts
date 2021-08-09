@@ -16,9 +16,7 @@ ngOnInit(){
 }
 
 setCurrentTab($event){
-console.log($event);
 this.selectTab = this.tabs.getSelected;
-console.log(this.selectTab);
 }
 
 }

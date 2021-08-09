@@ -1,3 +1,4 @@
+import { ChatService } from './../../services/chat.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
@@ -13,8 +14,14 @@ export class InvitationReplyModalPage implements OnInit {
   isRejected: any;
   isActive: any;
   invitationId: any;
+  mentor: any;
+  mentee: any;
   replyForm: FormGroup;
-  constructor(private modalCtrl: ModalController, private fb: FormBuilder, private invitationService: InvitationsService) { }
+  constructor(
+    private modalCtrl: ModalController,
+    private fb: FormBuilder,
+    private invitationService: InvitationsService,
+    private chatService: ChatService) { }
 
 ngOnInit() {
   this.isRejected = false;
@@ -47,6 +54,11 @@ accept(){
  this.invitationService.updateReply(this.invitationId,this.replyForm
   .get('weigeringstekst').value,'accepted')
  .then(() => {
+   this.chatService.createChat(this.mentee, this.mentor).then(docRef => {
+     this.chatService.sendMessage(docRef.id,'hello',this.mentee);
+     console.log(docRef.id);
+   })
+  .catch( error => {console.log(error);});
    this.close();
  }).catch(
    (error) => {
