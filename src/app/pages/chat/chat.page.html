@@ -1,9 +1,31 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>chat</ion-title>
+  <ion-toolbar class="header-of-toolbar">
+    <ion-buttons slot='start'>
+      <ion-back-button defaultHref="/tabs/chats" text=''></ion-back-button>
+    </ion-buttons>
+    <ion-title>Test naame</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="bg"></div>
+ </ion-content>
 
-</ion-content>
+ <ion-item lines="none">
+  <ion-badge color="danger" slot="end">Hey what's up ?<ion-note color="medium">21:16</ion-note></ion-badge>
+</ion-item>
+
+<ion-item lines="none">
+  <ion-badge color="light" slot="start">Nothing you? <ion-note color="medium">21:17</ion-note></ion-badge>
+</ion-item>
+
+ <ion-footer>
+  <ion-toolbar>
+    <ion-input placeholder="your message"></ion-input>
+    <ion-buttons slot="end">
+      <ion-button >
+        verstuur
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
