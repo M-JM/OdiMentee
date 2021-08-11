@@ -44,7 +44,7 @@ const routes: Routes = [
   //   loadChildren: () => import('./pages/studentlist/studentlist.module').then( m => m.StudentlistPageModule)
   // },
   {
-    path: ':student-detail/:id',
+    path: 'student-detail/:id',
     loadChildren: () => import('./pages/student-detail/student-detail.module').then( m => m.StudentDetailPageModule)
   },
   {
@@ -52,7 +52,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/invitation-modal/invitation-modal.module').then( m => m.InvitationModalPageModule)
   },
   {
-    path: 'chat',
+    path: 'chat/:id',
     loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
   },
   {

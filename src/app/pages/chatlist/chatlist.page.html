@@ -6,16 +6,16 @@
 
 <ion-content>
 
-  <ion-item detail routerLink="/chat">
+  <ion-item *ngFor="let chat of chats" [routerLink]="['/chat',chat.id]" tappable>
     <ion-avatar slot="start" >
-      <img src="">
+      <ion-img [src]="chat.mentee.photo"></ion-img>
     </ion-avatar>
     <ion-label>
       <div class="flex_box">
-        <h3>Name</h3>
+        <h3>{{chat.mentee.naam}}</h3>
         <ion-note slot="end">12:54</ion-note>
       </div>
-      <p>last message.</p>
+      <p>{{chat.messages[0].message}}</p>
     </ion-label>
   </ion-item>
 

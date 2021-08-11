@@ -20,6 +20,8 @@ export class ChatlistPage implements OnInit {
           this.chatservice.getChats(result.userId,result.role).subscribe(final => {
             this.chats = final;
             console.log(this.chats);
+            console.log(final);
+            console.log(this.chats[0].id);
           });
         }
       );
