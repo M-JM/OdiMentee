@@ -31,6 +31,7 @@ export class IntroPage implements OnInit {
   introForm1: FormGroup;
   introForm2: FormGroup;
   imageUpload: AngularFireUploadTask;
+  campus: string[];
 
   constructor(private fb: FormBuilder,
     private auth: AuthService,
@@ -57,6 +58,12 @@ this.opleidingen = [
   'ICT',
   'ICT-Graduaat',
   'ICT-Elektronica'
+];
+
+this.campus = [
+  'Brussel',
+  'Mechelen',
+  'Schaarbeek'
 ];
 
 this.opleidingenGraad = [
