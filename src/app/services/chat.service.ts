@@ -6,6 +6,10 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map, shareReplay, switchMap } from 'rxjs/operators';
 import { leftJoinDocument } from '../pipes/FirebaseJoin';
+import { firebase } from '@firebase/app';
+import '@firebase/firestore';
+
+
 
 
 @Injectable({
@@ -75,9 +79,9 @@ sendMessage(chatid,message, userid){
 const newMessage = {
 author: userid,
 message,
-createdAt: Date.now()
+createdAt: firebase.firestore.FieldValue.serverTimestamp()
 };
-this.db.doc(`chats/${chatid}`).collection('messages').add(newMessage);
+return this.db.doc(`chats/${chatid}`).collection('messages').add(newMessage);
 }
 
 

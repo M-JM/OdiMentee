@@ -7,25 +7,42 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
   <div class="bg"></div>
+  <div style="overflow: auto; height: 100%;"  #scrollMe [scrollTop]="scrollMe.scrollHeight">
+  <ion-grid >
+    <ion-row *ngFor="let message of chat" >
+
+      <ion-col size="9" size-md="6" *ngIf="message.author !== currentUserId" class="message other-message">
+        <span>{{ message.message }}
+        </span>
+
+        <div class="time ion-text-right"><br>{{ message.createdAt?.toMillis() | date:'short' }}</div>
+      </ion-col>
+
+      <ion-col offset="3" offset-md="6" size="9" size-md="6" *ngIf="message.author === currentUserId" class="message my-message">
+        <span>{{ message.message }}
+        </span>
+        <div class="time ion-text-right"><br>{{ message.createdAt?.toMillis() | date:'short' }}</div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</div>
  </ion-content>
-
- <ion-item lines="none">
-  <ion-badge color="danger" slot="end">Hey what's up ?<ion-note color="medium">21:16</ion-note></ion-badge>
-</ion-item>
-
-<ion-item lines="none">
-  <ion-badge color="light" slot="start">Nothing you? <ion-note color="medium">21:17</ion-note></ion-badge>
-</ion-item>
-
+ 
  <ion-footer>
   <ion-toolbar>
-    <ion-input placeholder="your message"></ion-input>
-    <ion-buttons slot="end">
-      <ion-button >
-        verstuur
-      </ion-button>
-    </ion-buttons>
+    <ion-row no-padding align-items-center>
+      <ion-col size="10">
+    <textarea class="message-input" #input rows="1" maxLength="500" (keydown)="resize()" (keyup)="resize()" 
+          [(ngModel)]="newMsg"></textarea>
+        </ion-col>
+        <ion-col size="2" text-center>
+          <ion-button expand="block" color="bright" [disabled]="newMsg === ''" class="msg-btn" (click)="sendMessage()">
+            <ion-icon name="send" color="bright" slot="icon-only">ddd</ion-icon>
+          </ion-button>
+        </ion-col>
+  </ion-row>
   </ion-toolbar>
 </ion-footer>

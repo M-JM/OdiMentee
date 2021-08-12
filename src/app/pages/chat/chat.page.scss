@@ -12,7 +12,7 @@ ion-content{
 }
 
 ion-footer ion-toolbar {
-    --background: #071d44;
+    --background: transparent;
 }
 ion-footer ion-button {
     font-weight: 600;
@@ -33,11 +33,48 @@ ion-item {
 }
 ion-badge {
     padding: 9px 13px;
+    margin-left: 5px;
     border-radius: 6px;
     font-weight: 400;
     font-size: 15px;
     box-shadow: 1px 1px 3px #00000029;
 }
+
+.message {
+    padding: 10px !important;
+    border-radius: 10px !important;
+    margin-bottom: 11px !important;
+    margin-top:5px !important;
+    font-weight: 400;
+    font-size: 15px;
+    box-shadow: 1px 1px 3px #00000029;
+  }
+  .my-message {
+    background: white;
+    color: black;
+  }
+  .other-message {
+    background: #006bbf;
+    color: black;
+  }
+
+.time {
+  color: black;
+  float: right;
+  font-size: small;
+}
+
+.message-input {
+    width: 100%;
+    border: 1px blue solid;
+    border-radius: 10px;
+    background: #fff;
+    resize: none;
+    font-weight: 400;
+    font-size: 15px;
+    --padding-start: 8px;
+}
+
 ion-item ion-note {
     font-size: 10px;
     margin-left: 8px;
