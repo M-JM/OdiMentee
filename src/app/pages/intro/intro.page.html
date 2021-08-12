@@ -1,12 +1,32 @@
-<ion-content class="forms-validations-content">
+<ion-content>
   <ion-slides pager="true">
+    <ion-slide>
+      <div class="container">
+
+      <div class="div1">
+        <h2>Waar ben je op zoek naar ?</h2>
+        <img src="/assets/imgs/mentee.gif">
+      </div>
+
+      <div class="div2">
+        <div class="space-between">
+          <div class="rating">
+            <ion-button>Naar een mentor</ion-button> 
+          </div>
+          <div class="rating">
+            <ion-button>Naar mentee's</ion-button> 
+          </div>
+        </div>
+      </div>
+    </div>
+    </ion-slide>
   <ion-slide>
         <ion-content padding>
           
             <form class="validations-form" [formGroup]="introForm1" (ngSubmit)="onSubmit()">
-              <ion-list class="inputs-list" lines="full">
+              <ion-list class="inputs-list" lines="none">
                 <ion-list-header>
-                  <ion-label class="header-title">Profiel opstellen</ion-label>
+                  <ion-label class="header-title">Profiel instellen</ion-label>
                 </ion-list-header>
 
                 <ion-item class="input-item item-label-floating">

@@ -1,39 +1,48 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Inbox
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
   
-  <ion-list *ngIf="(invitations)?.length > 0" style="margin-bottom: 40px;">
-    <ion-item *ngFor="let invitation of invitations" (click)='openInvitation(invitation.id, invitation.mentor, invitation.mentee.userId)' >
-      <ion-grid>
-        <ion-row>
+  <ion-card>
+    <ion-card-header>
+     
+      <ion-card-title>verzoeken van mentee's</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list *ngIf="(invitations)?.length > 0" style="margin-bottom: 40px;">
+        <ion-item *ngFor="let invitation of invitations" (click)='openInvitation(invitation.id, invitation.mentor, invitation.mentee.userId)' >
+          <ion-grid>
+            <ion-row>
+    
+              <ion-avatar style="background: #f2f2f2; margin-right: 5px;">
+                <ion-img [src]="invitation.mentee.photo"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h2 style="margin-left: 5px;">
+                  {{invitation.mentee.naam}}
+                </h2>
+                <p style="margin-left: 5px;">
+                  {{invitation.verzoektekst}}
+                </p>
+              </ion-label>
+    
+            </ion-row>
+          </ion-grid>
+    
+        </ion-item>
+      </ion-list>
+      <ion-list *ngIf="(invitations)?.length === 0" style="margin-bottom: 40px;">
+        <h3>
+        Geen uitnodigingen ontvangen
+      </h3>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 
-          <ion-avatar style="background: #f2f2f2; margin-right: 5px;">
-            <ion-img [src]="invitation.mentee.photo"></ion-img>
-          </ion-avatar>
-          <ion-label>
-            <h2 style="margin-left: 5px;">
-              {{invitation.mentee.naam}}
-            </h2>
-            <p style="margin-left: 5px;">
-              {{invitation.verzoektekst}}
-            </p>
-          </ion-label>
-
-        </ion-row>
-      </ion-grid>
-
-    </ion-item>
-  </ion-list>
-  <ion-list *ngIf="(invitations)?.length === 0" style="margin-bottom: 40px;">
-    <h3>
-    Geen uitnodigingen ontvangen
-  </h3>
-  </ion-list>
+ 
 </ion-content>

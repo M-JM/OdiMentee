@@ -1,0 +1,33 @@
+ion-content {
+    --ion-background-color: linear-gradient(#396afc, #2948ff);
+}
+ion-item{
+    --ion-background-color: transparent !important;
+}
+.padding-form{
+    padding:5%;
+    padding-bottom: 2px !important;
+}
+.padding-form2{
+    padding:5%;
+    padding-top: 2px !important;
+}
+.logo{
+    height: 30%;
+}
+.logo ion-icon {
+    position: absolute;
+    font-size: 9em;
+    top:20%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.logo h1{
+    position: absolute;
+    font-size: 50px;
+    color: white;
+    top:10%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    padding-bottom: 30px;
+}
