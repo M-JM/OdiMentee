@@ -11,7 +11,8 @@
   <ion-searchbar placeholder="Zoek een mentor" [(ngModel)]="term" animated="true"></ion-searchbar>
 
 
-  <ion-list *ngIf="(students | filter:term).length > 0" style="margin-bottom: 40px;">
+  <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+  <ion-list *ngIf="(students | filter:term).length > 0 && !showSpinner" style="margin-bottom: 40px;">
     <ion-item *ngFor="let student of students | filter:term" [routerLink]="['/student-detail',student.userId]" tappable>
       <ion-grid>
         <ion-row>
@@ -45,7 +46,7 @@
 
     </ion-item>
   </ion-list>
-  <h3 *ngIf="(students | filter:term).length === 0" class="empty-list-message">
+  <h3 *ngIf="(students | filter:term).length === 0 && !showSpinner" class="empty-list-message">
     Geen studenten gevonden met gekozen zoekterm
   </h3>
 </ion-content>

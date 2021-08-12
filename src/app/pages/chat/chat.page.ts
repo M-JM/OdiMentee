@@ -20,6 +20,7 @@ chat: any[];
 chatId: string;
 newMsg='';
 currentUserId ;
+showSpinner = true;
 
 
 
@@ -37,9 +38,8 @@ currentUserId ;
       this.chat = data;
       this.authService.getUid().then(res => {
         this.currentUserId = res;
+        this.showSpinner = false;
       });
-      console.log(this.chat);
-      console.log(this.currentUserId);
     //  const currentPosition = this.myScrollContainer.nativeElement.scrollTop;
      // this.myScrollContainer.nativeElement.scrollTop = currentPosition;
     });

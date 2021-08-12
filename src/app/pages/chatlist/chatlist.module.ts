@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ChatlistPageRoutingModule } from './chatlist-routing.module';
 
 import { ChatlistPage } from './chatlist.page';
+import { LoadingSpinnerComponent } from 'src/app/ui/loading-spinner/loading-spinner.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ChatlistPage } from './chatlist.page';
     IonicModule,
     ChatlistPageRoutingModule
   ],
-  declarations: [ChatlistPage]
+  declarations: [ChatlistPage,LoadingSpinnerComponent]
 })
 export class ChatlistPageModule {}

@@ -11,6 +11,7 @@ export class StudentlistPage implements OnInit {
 students = [];
 loadedStudentsList= [];
 term = '';
+showSpinner = true;
 
   constructor(private profileService: ProfileService) { }
 
@@ -48,6 +49,7 @@ term = '';
     this.profileService.getProfiles().subscribe(res => {
       this.students = res;
       this.loadedStudentsList=res;
+      this.showSpinner=false;
     });
   }
 

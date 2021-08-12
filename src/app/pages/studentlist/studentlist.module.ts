@@ -1,3 +1,4 @@
+import { LoadingSpinnerComponent } from './../../ui/loading-spinner/loading-spinner.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +18,6 @@ import { StudentlistPage } from './studentlist.page';
     Ng2SearchPipeModule,
     StudentlistPageRoutingModule,
   ],
-  declarations: [StudentlistPage]
+  declarations: [StudentlistPage,LoadingSpinnerComponent]
 })
 export class StudentlistPageModule {}

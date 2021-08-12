@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatlistPage implements OnInit {
   chats: any;
+  showSpinner = true;
 
   constructor(private profileservice: ProfileService, private chatservice: ChatService) { }
 
@@ -16,12 +17,9 @@ export class ChatlistPage implements OnInit {
     this.profileservice.getid().then(res => {
       this.profileservice.getProfileAsObservable(res).subscribe(
         result => {
-          console.log(result);
           this.chatservice.getChats(result.userId,result.role).subscribe(final => {
             this.chats = final;
-            console.log(this.chats);
-            console.log(final);
-            console.log(this.chats[0].id);
+            this.showSpinner = false;
           });
         }
       );

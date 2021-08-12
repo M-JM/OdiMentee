@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-
+  <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
   <ion-item *ngFor="let chat of chats" [routerLink]="['/chat',chat.id]" tappable>
     <ion-avatar slot="start" >
       <ion-img [src]="chat.mentee.photo"></ion-img>
