@@ -28,7 +28,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   AngularFireAuthModule,
   AngularFirestoreModule,
   ReactiveFormsModule,
-  Ng2SearchPipeModule
+  Ng2SearchPipeModule,
 
 ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

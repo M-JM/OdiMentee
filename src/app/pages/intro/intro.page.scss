@@ -1,5 +1,6 @@
 ion-content {
     --ion-background-color: #396afc;
+    font-family: Open-Sans;
 }
  
 ion-slides {
@@ -10,6 +11,8 @@ ion-slides {
 
 ion-item{
     --ion-background-color: transparent !important;
+    padding: 5px 5px 5px 5px;
+    color: white;
 }
 .padding-form{
     padding:5%;
@@ -26,7 +29,7 @@ ion-item{
 .space-between{
     display: flex;
     justify-content: space-between;
-    padding: 10px 10px 0px 10px;
+    padding: 15px 80px 0px 80px;
   }
   
   .rating{
@@ -54,10 +57,20 @@ ion-item{
     margin: 5px auto;
     margin-bottom: 15%;
 }
+.div1 h1 {
+    font-family: Open-Sans;
+    font-weight: 600;
+    color: white;
+}
 
 .div2 {
 
     width: 100%;
     height: 150px;
     margin: 5px auto;
+}
+.div2 ion-button {
+    font-family: Open-Sans;
+    font-weight: 400;
+    color: white;
 }

@@ -8,7 +8,6 @@
  * For more information on global stylesheets, visit the documentation:
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
-
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
 
@@ -51,6 +50,12 @@ padding: 25px;
 --border-radius: 10px;
 
 padding: 25px;
+}
+
+:root[mode=ios] .Open+Sans,
+:root[mode=md] .Open+Sans{
+  --ion-font-family:  'Open Sans'!important;
+  font-family:  'Open Sans' !important;
 }
 
 /* ion-content {

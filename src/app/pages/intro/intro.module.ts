@@ -1,3 +1,4 @@
+import { IonicSelectableModule } from 'ionic-selectable';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,8 +16,9 @@ import { IntroPage } from './intro.page';
     FormsModule,
     IonicModule,
     IntroPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IonicSelectableModule
   ],
-  declarations: [IntroPage ]
+  declarations: [IntroPage]
 })
 export class IntroPageModule {}

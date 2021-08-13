@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/dot-notation */
+/* eslint-disable prefer-const */
+import { Skill } from './skill.model';
 import { StorageService } from './storage.service';
 import { Profile } from './profile.model';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -42,6 +46,22 @@ async getid() {
   // eslint-disable-next-line no-var
   var value = await this.storage.get('id');
   return value;
+}
+
+
+getSkills(): Observable<Skill[]> {
+  return this.db.collection('skills').get().pipe(map(snapshot => {
+    let skills = [];
+
+    snapshot.forEach(doc => {
+      skills.push(new Skill({
+        id: doc.id,
+        naam: doc.data()['Naam']
+      }));
+    });
+
+    return skills;
+  }));
 }
 
 }

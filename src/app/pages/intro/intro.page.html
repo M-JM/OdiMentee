@@ -1,43 +1,112 @@
 <ion-content>
   <ion-slides pager="true">
     <ion-slide>
-      <div class="container">
+      <div class="container" style="height: 100%;">
+        <ion-header>
+          <ion-toolbar color="primary">
+            <ion-title>Profiel instellen (1/4)</ion-title>
+          </ion-toolbar>
+        </ion-header>
 
-      <div class="div1">
-        <h2>Waar ben je op zoek naar ?</h2>
-        <img src="/assets/imgs/mentee.gif">
-      </div>
+        <div class="div1">
+          <h1>Kies hier je rol</h1>
+          <img src="/assets/imgs/mentee.gif">
+        </div>
 
-      <div class="div2">
-        <div class="space-between">
-          <div class="rating">
-            <ion-button>Naar een mentor</ion-button> 
-          </div>
-          <div class="rating">
-            <ion-button>Naar mentee's</ion-button> 
+        <div class="div2">
+          <div class="space-between">
+            <div class="rating">
+              <ion-button>mentor</ion-button>
+            </div>
+            <div class="rating">
+              <ion-button>mentee</ion-button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </ion-slide>
-  <ion-slide>
-        <ion-content padding>
+
+    <ion-slide>
+      <ion-content>
+        <div class="container" style="height: 100%;">
+          <ion-header>
+            <ion-toolbar color="primary">
+              <ion-title>Profiel instellen (2/4)</ion-title>
+            </ion-toolbar>
+          </ion-header>
+          <div class="div1">
+            <h1>Jouw Odisee parcours</h1>
+
+       
+            <ion-item>
+              <ion-label>Jouw vaardigheden</ion-label>
+              <ionic-selectable
+                #selectComponent
+                [(ngModel)]="selectedUsers"
+                [items]="tests"
+                itemValueField="id"
+                itemTextField="naam"
+                [isMultiple]="true"
+                [canSearch]="true"
+                headerColor="primary"
+                searchFailText="Nothing found :("
+              >
+                <ng-template ionicSelectableCloseButtonTemplate>
+                  <ion-icon name="close-circle"></ion-icon>
+                </ng-template>
           
+                <ng-template ionicSelectableTitleTemplate> Selecteer max 4 vaardigheden </ng-template>
+          
+                <ng-template ionicSelectableItemTemplate let-test="item">
+                  {{ test.naam }}
+                </ng-template>
+          
+                <ng-template ionicSelectableFooterTemplate>
+                  <ion-footer>
+                    <ion-toolbar>
+                      <ion-row text-center  >
+                        <ion-col size="4">
+                          <ion-button fill="clear" (click)="clear()">Clear</ion-button>
+                        </ion-col>
+                        <ion-col size="4">
+                         
+                        </ion-col>
+                        <ion-col size="4">
+                          <ion-button fill="clear" (click)="confirm()"
+                            >Confirm</ion-button
+                          >
+                        </ion-col>
+                      </ion-row>
+                    </ion-toolbar>
+                  </ion-footer>
+                </ng-template>
+              </ionic-selectable>
+            </ion-item>
+            
             <form class="validations-form" [formGroup]="introForm1" (ngSubmit)="onSubmit()">
               <ion-list class="inputs-list" lines="none">
-                <ion-list-header>
-                  <ion-label class="header-title">Profiel instellen</ion-label>
-                </ion-list-header>
 
                 <ion-item class="input-item item-label-floating">
-                  <ion-label position="floating">talen</ion-label>
+                  <ion-label position="floating">Taal</ion-label>
                   <ion-select formControlName="talen">
                     <ion-select-option *ngFor="let taal of talen" [value]="taal">{{ taal }}</ion-select-option>
                   </ion-select>
                 </ion-item>
 
+
                 <ion-item class="input-item item-label-floating">
-                  <ion-label position="floating">opleidingen</ion-label>
+                  <ion-label position="floating">Campus</ion-label>
+                  <ion-select formControlName="opleidingen" cancelText="Cancel" okText="OK">
+                    <ion-select-option *ngFor="let opleiding of opleidingen" [value]="opleiding">{{ opleiding }}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+               
+
+
+                <ion-item class="input-item item-label-floating">
+                  <ion-label position="floating">Richting</ion-label>
                   <ion-select formControlName="opleidingen" cancelText="Cancel" okText="OK">
                     <ion-select-option *ngFor="let opleiding of opleidingen" [value]="opleiding">{{ opleiding }}
                     </ion-select-option>
@@ -45,7 +114,7 @@
                 </ion-item>
 
                 <ion-item class="input-item item-label-floating">
-                  <ion-label position="floating">opleidingenGraad</ion-label>
+                  <ion-label position="floating">Opleidings graad</ion-label>
                   <ion-select formControlName="opleidingenGraad" cancelText="Cancel" okText="OK">
                     <ion-select-option *ngFor="let graad of opleidingenGraad" [value]="graad">{{ graad }}
                     </ion-select-option>
@@ -53,51 +122,65 @@
                 </ion-item>
               </ion-list>
             </form>
-            <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+          </div>
 
-          </ion-content>
-        </ion-slide>
+          <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
 
-        <ion-slide>
-          <ion-content padding>
-            <p>test</p>
-            
-            <ion-button>
-            <input type="file" (change)="uploadProfileToFirebase($event)" id="file-input" accept="image/png, image/jpg, image/jpeg">
-            </ion-button>
+        </div>
+      </ion-content>
+    </ion-slide>
 
+    <ion-slide>
+      <ion-content>
+        <div class="container" style="height: 100%;">
+          <ion-header>
+            <ion-toolbar color="primary">
+              <ion-title>Profiel instellen (3/4)</ion-title>
+            </ion-toolbar>
+          </ion-header>
+        <div class="div1">
+          <ion-button>
+            <input type="file" (change)="uploadProfileToFirebase($event)" id="file-input"
+              accept="image/png, image/jpg, image/jpeg">
+          </ion-button>
+          <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+        </div>
+        </div>
 
-              <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
-            </ion-content>  
-          </ion-slide>
-        
+       
 
-        <ion-slide>
-          <ion-content padding>
-            <p>test</p>
-              <form class="validations-form" [formGroup]="introForm2" (ngSubmit)="onSubmit2()">
-                
-                <ion-item class="input-item item-label-floating">
-                  <ion-label position="floating">Beschrijving</ion-label>
-                <ion-input type="text" placeholder="geef een korte beschrijving van jezelf" formControlName="beschrijving"></ion-input>
-                </ion-item>
-
-                <ion-item class="input-item item-label-floating">
-                  <ion-label position="floating">skills</ion-label>
-                  <ion-select multiple="true" formControlName="skills">
-                    <ion-select-option *ngFor="let skill of skills" [value]="skill" >{{ skill }}</ion-select-option>
-                  </ion-select>
-                </ion-item>
+       
+      </ion-content>
+    </ion-slide>
 
 
-                <ion-button class="submit-btn" type="submit" expand="block" fill="outline"
-                  [disabled]="!introForm2.valid || !introForm2.valid">Submit</ion-button>
-              </form>
-              <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
-            </ion-content>  
-          </ion-slide>
-        
+    <ion-slide>
+      <ion-content padding>
+        <p>test</p>
+        <form class="validations-form" [formGroup]="introForm2" (ngSubmit)="onSubmit2()">
+
+          <ion-item class="input-item item-label-floating">
+            <ion-label position="floating">Beschrijving</ion-label>
+            <ion-input type="text" placeholder="geef een korte beschrijving van jezelf" formControlName="beschrijving">
+            </ion-input>
+          </ion-item>
+
+          <ion-item class="input-item item-label-floating">
+            <ion-label position="floating">skills</ion-label>
+            <ion-select multiple="true" formControlName="skills">
+              <ion-select-option *ngFor="let skill of skills" [value]="skill">{{ skill }}</ion-select-option>
+            </ion-select>
+          </ion-item>
 
 
-        </ion-slides>
+          <ion-button class="submit-btn" type="submit" expand="block" fill="outline"
+            [disabled]="!introForm2.valid || !introForm2.valid">Submit</ion-button>
+        </form>
+        <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+      </ion-content>
+    </ion-slide>
+
+
+
+  </ion-slides>
 </ion-content>
