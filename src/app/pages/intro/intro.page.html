@@ -160,6 +160,15 @@
               <ion-title>Profiel instellen (3/4)</ion-title>
             </ion-toolbar>
           </ion-header>
+          <!-- //https://gamiparesh5.medium.com/whatsapp-style-profile-picture-selection-modal-using-an-ionic-capacitor-with-core-camera-and-2a9c470ed36b -->
+          <div class="container2">
+            <div class="outer"
+              [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+                <div class="inner" (click)="openOptionSelection()">
+                   <ion-icon name="camera" class="camera-icon"></ion-icon>
+                </div>
+             </div>
+          </div>
         <div class="div1">
           <ion-button>
             <input type="file" (change)="uploadProfileToFirebase($event)" id="file-input"

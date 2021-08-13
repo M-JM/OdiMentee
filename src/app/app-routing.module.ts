@@ -62,6 +62,10 @@ const routes: Routes = [
   {
     path: 'invitation-reply-modal',
     loadChildren: () => import('./pages/invitation-reply-modal/invitation-reply-modal.module').then( m => m.InvitationReplyModalPageModule)
+  },
+  {
+    path: 'profile-photo-option',
+    loadChildren: () => import('./pages/profile-photo-option/profile-photo-option.module').then( m => m.ProfilePhotoOptionPageModule)
   }
 ];
 @NgModule({

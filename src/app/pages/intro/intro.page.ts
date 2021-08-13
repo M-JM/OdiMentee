@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable prefer-const */
 /* eslint-disable no-var */
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -10,7 +11,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import {
@@ -20,6 +21,11 @@ import {
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { Skill } from 'src/app/services/skill.model';
 import { BehaviorSubject } from 'rxjs';
+
+import { ProfilePhotoOptionPage } from '../profile-photo-option/profile-photo-option.page';
+import { Camera, CameraResultType,CameraSource } from '@capacitor/camera';
+
+
 
 @Component({
   selector: 'app-intro',
@@ -38,6 +44,7 @@ export class IntroPage implements OnInit {
   userId: any;
   fileName: string;
   uploadFileName: any;
+  photo: any = './assets/imgs/profile.jpg';
   toggle = true;
   selectedUsers = null;
   obsSkills = new BehaviorSubject<Skill[]>([]);
@@ -53,7 +60,8 @@ export class IntroPage implements OnInit {
     private profileService: ProfileService,
     private authService: AuthService,
     private afAuth: AngularFireAuth,
-    private angularFireStorage: AngularFireStorage
+    private angularFireStorage: AngularFireStorage,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -201,44 +209,30 @@ export class IntroPage implements OnInit {
     });
   }
 
-  // searchPorts(event: {
-  //   component: IonicSelectableComponent;
-  //   text: string;
-  // }) {
-  //   let text = event.text.trim().toLowerCase();
-  //   console.log(text);
-  //   event.component.startSearch();
 
-  //   // Close any running subscription.
-  //   if (this.tests) {
-  //     this.tests.unsubscribe();
-  //   }
+  async openOptionSelection() {
+    const modal = await this.modalController.create({
+      component: ProfilePhotoOptionPage,
+      cssClass: 'transparent-modal'
+    });
+    modal.onDidDismiss()
+    .then(res => {
+      console.log(res);
+      if (res.role !== 'backdrop') {
+        this.takePicture(res.data);
+      }
+    });
+    return await modal.present();
+  }
+  async takePicture(type) {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.Uri,
+      source: CameraSource[type]
+    });
+    this.photo = image.webPath;
+  }
 
-  //   if (!text) {
-  //     // Close any running subscription.
-  //     if (this.tests) {
-  //       this.tests.unsubscribe();
-  //     }
 
-  //     event.component.items = [];
-  //     event.component.endSearch();
-  //     return;
-  //   }
-
-  //   this.tests = this.profileService.getSkills().subscribe(skills => {
-  //     // Subscription will be closed when unsubscribed manually.
-  //     if (this.tests.closed) {
-  //       return;
-  //     }
-
-  //     // We get all ports and then filter them at the front-end,
-  //     // however, filtering can be parameterized and moved to a back-end.
-  //     event.component.items = this.filterPorts(skills, text);
-  //     event.component.endSearch();
-  //   });
-  // }
-
-  // filterPorts(skills: Skill[], text: string) {
-  //   return skills.filter(skill => skill.naam.toLowerCase().indexOf(text) !== -1);
-  // }
 }
