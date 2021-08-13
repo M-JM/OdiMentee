@@ -37,8 +37,7 @@
           <div class="div1">
             <h1>Jouw Odisee parcours</h1>
 
-       
-            <ion-item>
+            <ion-item lines='none'>
               <ion-label>Jouw vaardigheden</ion-label>
               <ionic-selectable
                 #selectComponent
@@ -48,14 +47,32 @@
                 itemTextField="naam"
                 [isMultiple]="true"
                 [canSearch]="true"
+                [canClear]="true"
                 headerColor="primary"
+                closeButtonSlot="start"
                 searchFailText="Nothing found :("
-              >
-                <ng-template ionicSelectableCloseButtonTemplate>
-                  <ion-icon name="close-circle"></ion-icon>
+                (onSelect)="selectChange($event)">
+                [isConfirmButtonEnabled]="selectComponent.itemsToConfirm.length >= 1 && selectComponent.itemsToConfirm.length <=4" >
+                <ng-template ionicSelectableMessageTemplate>
+                  <p>Selecteer max 4. vaardigheden.</p>
+                    <ion-label text-wrap>
+                      <ion-chip *ngFor="let skill of obsSkills | async " disabled='true' size='small' mode='md'>
+                        <ion-label color="primary">{{skill.naam}}</ion-label>
+                      </ion-chip>
+                    </ion-label>
                 </ng-template>
           
-                <ng-template ionicSelectableTitleTemplate> Selecteer max 4 vaardigheden </ng-template>
+                <ng-template ionicSelectableHeaderTemplate>
+                  <ion-header>
+                    <ion-toolbar color="primary">
+                      <ion-button color="transparent" (click)="cancel()"
+                      >Cancel</ion-button
+                    >
+                    </ion-toolbar>
+                  </ion-header>
+
+                 
+                  </ng-template>
           
                 <ng-template ionicSelectableItemTemplate let-test="item">
                   {{ test.naam }}
@@ -64,15 +81,13 @@
                 <ng-template ionicSelectableFooterTemplate>
                   <ion-footer>
                     <ion-toolbar>
-                      <ion-row text-center  >
-                        <ion-col size="4">
-                          <ion-button fill="clear" (click)="clear()">Clear</ion-button>
+                      <ion-row text-center>
+                        <ion-col size="6" class="ion-text-center">
+                          <ion-button color="primary" (click)="clear()">Clear</ion-button>
                         </ion-col>
-                        <ion-col size="4">
-                         
-                        </ion-col>
-                        <ion-col size="4">
-                          <ion-button fill="clear" (click)="confirm()"
+                        
+                        <ion-col size="6" class="ion-text-center">
+                          <ion-button color="primary" (click)="confirm()" [disabled]="selectComponent.itemsToConfirm.length < 1 || selectComponent.itemsToConfirm.length >4"
                             >Confirm</ion-button
                           >
                         </ion-col>
@@ -80,6 +95,7 @@
                     </ion-toolbar>
                   </ion-footer>
                 </ng-template>
+    
               </ionic-selectable>
             </ion-item>
             
@@ -124,9 +140,15 @@
             </form>
           </div>
 
-          <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
 
+       
+          <div class="div3">
+            <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+          </div>
+       
         </div>
+      
+           
       </ion-content>
     </ion-slide>
 
@@ -143,7 +165,9 @@
             <input type="file" (change)="uploadProfileToFirebase($event)" id="file-input"
               accept="image/png, image/jpg, image/jpeg">
           </ion-button>
-          <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+          <div class="div3">
+            <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+          </div>
         </div>
         </div>
 
