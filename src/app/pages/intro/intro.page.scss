@@ -81,29 +81,29 @@ ion-item{
 }
 
 .container2 {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     display: block;
-    margin: 0 auto;
+    margin: 80px auto;
   }
   .profile-pic {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
   }
   .outer {
     width: 100% !important;
     height: 100% !important;
-    max-width: 150px !important; /* any size */
-    max-height: 150px !important; /* any size */
+    max-width: 250px !important; /* any size */
+    max-height: 250px !important; /* any size */
     margin: auto;
     border-radius: 100%;
     position: relative;
-    background-size: 150px 150px;
+    background-size: 250px 250px;
   }
   .inner {
     background-color: #075E54;
-    width: 45px;
-    height: 45px;
+    width: 60px;
+    height: 60px;
     border-radius: 100%;
     position: absolute;
     bottom: 0;
@@ -113,7 +113,7 @@ ion-item{
     justify-content: center;
   }
   .camera-icon {
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
     color: white;
   }

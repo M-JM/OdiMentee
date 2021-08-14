@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable prefer-const */
 /* eslint-disable no-var */
@@ -225,13 +226,20 @@ export class IntroPage implements OnInit {
     return await modal.present();
   }
   async takePicture(type) {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: true,
-      resultType: CameraResultType.Uri,
-      source: CameraSource[type]
-    });
-    this.photo = image.webPath;
+    if(type === 'Camera' || type ==='Photos'){
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        source: CameraSource[type]
+      });
+      this.photo = image.webPath;
+    }else if(type=== 'Delete')
+    {
+    this.photo = './assets/imgs/profile.jpg';
+    }else{
+      this.photo = type;
+    } ;
   }
 
 
