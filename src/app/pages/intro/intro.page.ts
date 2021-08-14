@@ -40,8 +40,10 @@ export class IntroPage implements OnInit {
   talen: Array<string>;
   opleidingen: Array<string>;
   opleidingenGraad: Array<string>;
+  campusen: Array<string>;
   skills: any;
   tests: any;
+  rol: any;
   userId: any;
   fileName: string;
   uploadFileName: any;
@@ -81,20 +83,19 @@ export class IntroPage implements OnInit {
 
     this.opleidingen = ['ICT', 'ICT-Graduaat', 'ICT-Elektronica'];
 
-    this.campus = ['Brussel', 'Mechelen', 'Schaarbeek'];
+    this.campusen = ['Brussel', 'Mechelen', 'Schaarbeek'];
 
     this.opleidingenGraad = ['1ste', '2de', '3de', '4de'];
 
     this.skills = ['C#', 'JAVA', 'SQL', 'Angular', 'Ionic'];
 
     this.introForm1 = new FormGroup({
-      talen: new FormControl(this.talen[0], Validators.required),
-      opleidingen: new FormControl(this.opleidingen[0], Validators.required),
-      opleidingenGraad: new FormControl(
-        this.opleidingenGraad[0],
-        Validators.required
-      ),
+      talen: new FormControl('', Validators.required),
+      opleidingen: new FormControl('', Validators.required),
+      opleidingenGraad: new FormControl('',Validators.required),
       tests: new FormControl(this.tests),
+      campusen: new FormControl('',Validators.required),
+      beschrijving: new FormControl('')
     });
     this.introForm2 = new FormGroup({
       skills: new FormControl(this.skills[0]),
@@ -106,17 +107,22 @@ export class IntroPage implements OnInit {
     this.slides.slideNext();
   }
 
-  onSubmit() { }
-  onSubmit2() {
+  selectRol(rol: string){
+    this.rol = rol;
+    this.next();
+  };
+
+
+  onSubmit() {
     const profile: Profile = {
       opleidingsfase: this.introForm1.get('opleidingenGraad').value,
       opleiding: this.introForm1.get('opleidingen').value,
       taalvoorkeur: this.introForm1.get('talen').value,
-      beschrijving: this.introForm2.get('beschrijving').value,
+      beschrijving: this.introForm1.get('beschrijving').value,
       skills: this.introForm2.get('skills').value,
       photo: this.uploadFileName,
-      campus: 'test',
-      role: 'mentee',
+      campus: this.introForm1.get('campusen').value,
+      role: this.rol,
       userId: this.userId,
     };
 

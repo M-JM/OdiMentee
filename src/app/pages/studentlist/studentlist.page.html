@@ -1,14 +1,12 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Zoek je ideale mentor
-    </ion-title>
+  <ion-toolbar class="header-of-toolbar">
+    <ion-title style='text-align: center;'>Zoek je ideale mentor</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-  <ion-searchbar placeholder="Zoek een mentor" [(ngModel)]="term" animated="true"></ion-searchbar>
+  <ion-searchbar style='border-radius: 10%;' placeholder="Zoek een mentor" [(ngModel)]="term" animated="true"></ion-searchbar>
 
 
   <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
@@ -35,8 +33,8 @@
           <ion-col size="12" size-sm>
             <div>
               <p class="ion-text-wrap" style="margin-top: 2px; margin-bottom: 2px;">
-                <ion-chip *ngFor="let skill of student.skills | slice:0:10 " disabled='true' size='small' mode='md'>
-                  <ion-label color="primary">{{skill}}</ion-label>
+                <ion-chip *ngFor="let skill of student.skills | slice:0:10 " disabled='false' size='medium' mode='md'>
+                  <ion-label >{{skill}}</ion-label>
                 </ion-chip>
               </p>
             </div>

@@ -1,22 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>chatlist</ion-title>
+  <ion-toolbar class="header-of-toolbar">
+    <ion-title style='text-align: center;'>chat list</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
-  <ion-item *ngFor="let chat of chats" [routerLink]="['/chat',chat.id]" tappable>
-    <ion-avatar slot="start" >
-      <ion-img [src]="chat.mentee.photo"></ion-img>
-    </ion-avatar>
-    <ion-label>
-      <div class="flex_box">
-        <h3>{{chat.mentee.naam}}</h3>
-        <ion-note slot="end">12:54</ion-note>
-      </div>
-      <p>{{chat.messages[0].message}}</p>
-    </ion-label>
-  </ion-item>
+  <div *ngIf="(chats)?.length > 0">
+    <ion-item *ngFor="let chat of chats" [routerLink]="['/chat',chat.id]" tappable>
+      <ion-avatar slot="start" >
+        <ion-img [src]="chat.mentee.photo"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <div class="flex_box">
+          <h3>{{chat.mentee.naam}}</h3>
+        </div>
+        <p>{{chat.messages[0].message}}</p>
+      </ion-label>
+    </ion-item>
+  </div>
+  <div *ngIf="(chats)?.length === 0">
+    <div class='noMessages'>
+      <img src="/assets/imgs/mailbox.png">
+     </div>
+  </div>
 
 </ion-content>

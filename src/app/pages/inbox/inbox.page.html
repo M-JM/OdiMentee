@@ -1,7 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-    </ion-title>
+  <ion-toolbar class="header-of-toolbar">
+    <ion-title style='text-align: center;'>jouw Inbox</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -36,13 +35,14 @@
     
         </ion-item>
       </ion-list>
-      <ion-list *ngIf="(invitations)?.length === 0" style="margin-bottom: 40px;">
-        <h3>
-        Geen uitnodigingen ontvangen
-      </h3>
-      </ion-list>
+    
     </ion-card-content>
   </ion-card>
 
+  <div *ngIf="(invitations)?.length === 0" style="margin-bottom: 40px;">
+    <div class='noMessages'>
+     <img src="/assets/imgs/noMessage.png">
+    </div>
+   </div>
  
 </ion-content>

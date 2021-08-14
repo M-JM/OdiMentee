@@ -8,3 +8,18 @@
     height: 60px;  
 }
   
+.header-of-toolbar{
+  --background: #396afc !important ;
+  --color:white;
+  border-bottom: 10px;
+}
+ion-label{
+  --color	:black !important;
+}
+ion-chip{
+  --color	:black !important;
+  --background: #396afc!important;
+}
+ion-searchbar{
+  border-radius: 2% !important;
+}

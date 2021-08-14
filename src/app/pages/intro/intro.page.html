@@ -16,10 +16,10 @@
         <div class="div2">
           <div class="space-between">
             <div class="rating">
-              <ion-button>mentor</ion-button>
+              <ion-button (click)="selectRol('mentor')">mentor</ion-button>
             </div>
             <div class="rating">
-              <ion-button>mentee</ion-button>
+              <ion-button (click)="selectRol('mentee')">mentee</ion-button>
             </div>
           </div>
         </div>
@@ -100,51 +100,59 @@
             </ion-item>
             
             <form class="validations-form" [formGroup]="introForm1" (ngSubmit)="onSubmit()">
-              <ion-list class="inputs-list" lines="none">
+            
 
                 <ion-item class="input-item item-label-floating">
-                  <ion-label position="floating">Taal</ion-label>
-                  <ion-select formControlName="talen">
+                  <ion-label class="my-label" position="stacked">Taal:</ion-label>
+                  <ion-select formControlName="talen" cancelText="Cancel" placeholder='selecteer jouw taal'>
                     <ion-select-option *ngFor="let taal of talen" [value]="taal">{{ taal }}</ion-select-option>
                   </ion-select>
                 </ion-item>
 
 
                 <ion-item class="input-item item-label-floating">
-                  <ion-label position="floating">Campus</ion-label>
-                  <ion-select formControlName="opleidingen" cancelText="Cancel" okText="OK">
+                  <ion-label class="my-label" position="stacked">Campus:</ion-label>
+                  <ion-select formControlName="campusen" cancelText="Cancel" placeholder='kies jouw campus' okText="OK">
+                    <ion-select-option *ngFor="let campus of campusen" [value]="campus">{{ campus }}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+                <ion-item class="input-item ">
+                  <ion-label class="my-label" position="stacked">Richting:</ion-label>
+                  <ion-select formControlName="opleidingen" cancelText="Cancel" placeholder='kies een opleiding' okText="OK">
                     <ion-select-option *ngFor="let opleiding of opleidingen" [value]="opleiding">{{ opleiding }}
                     </ion-select-option>
                   </ion-select>
                 </ion-item>
 
-               
-
-
-                <ion-item class="input-item item-label-floating">
-                  <ion-label position="floating">Richting</ion-label>
-                  <ion-select formControlName="opleidingen" cancelText="Cancel" okText="OK">
-                    <ion-select-option *ngFor="let opleiding of opleidingen" [value]="opleiding">{{ opleiding }}
-                    </ion-select-option>
-                  </ion-select>
-                </ion-item>
-
-                <ion-item class="input-item item-label-floating">
-                  <ion-label position="floating">Opleidings graad</ion-label>
-                  <ion-select formControlName="opleidingenGraad" cancelText="Cancel" okText="OK">
+                <ion-item class="input-item ">
+                  <ion-label class="my-label" position="stacked">Opleidings graad:</ion-label>
+                  <ion-select formControlName="opleidingenGraad" cancelText="Cancel" placeholder='selecteer jouw graad' okText="OK">
                     <ion-select-option *ngFor="let graad of opleidingenGraad" [value]="graad">{{ graad }}
                     </ion-select-option>
                   </ion-select>
                 </ion-item>
-              </ion-list>
+
+                <ion-item class="input-item">
+                  <ion-label  class="my-label" position="stacked">Beschrijving:</ion-label>
+                  <ion-textarea type="text" minlength=1 maxlength=500 rows=3 placeholder="geef een korte beschrijving van jezelf" formControlName="beschrijving">
+                  </ion-textarea>
+                </ion-item>
+
+
+                <div class="div3">
+                  <ion-button type="submit" [disabled]="!introForm1.valid" (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+                </div>
+               
             </form>
           </div>
 
 
-       
+<!--        
           <div class="div3">
             <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
-          </div>
+          </div> -->
        
         </div>
       
@@ -185,7 +193,7 @@
 
     <ion-slide>
       <ion-content padding>
-        <p>test</p>
+        <!-- <p>test</p>
         <form class="validations-form" [formGroup]="introForm2" (ngSubmit)="onSubmit2()">
 
           <ion-item class="input-item item-label-floating">
@@ -205,7 +213,24 @@
           <ion-button class="submit-btn" type="submit" expand="block" fill="outline"
             [disabled]="!introForm2.valid || !introForm2.valid">Submit</ion-button>
         </form>
-        <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+        <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button> -->
+        <div class="container" style="height: 100%;">
+          <ion-header>
+            <ion-toolbar color="primary">
+              <ion-title>Profiel instellen (4/4)</ion-title>
+            </ion-toolbar>
+          </ion-header>
+          <div class="div2">
+            <div class="pyro">
+              <div class="before"></div>
+              <div class="after"></div>
+              <div>
+                <p>Jouw profiel is nu ingesteld</p>
+              </div>
+            </div>
+          </div>
+       
+      </div>
       </ion-content>
     </ion-slide>
 
