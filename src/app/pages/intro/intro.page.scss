@@ -17,7 +17,7 @@ ion-slides {
 
 ion-item{
     --ion-background-color: transparent !important;
-    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
     --border-width: 2px 2px 2px 2px;
     --border-radius	:3%;
     --border-color:var(--bullet-background-active);
@@ -247,4 +247,25 @@ $box-shadow2: ();
     margin-top: 30%;
     margin-left: 80%;
   }
+}
+.divErrors{
+  text-align: left;
+  padding-left: 4px;
+  font-size: medium;
+  font-weight: 500;
+  
+}
+
+span{
+  float: inline-start;
+}
+
+:host {
+  .item-interactive.ion-invalid{
+   --highlight-background: transparent !important;
+   
+ }
+ .item-interactive.ion-valid{
+   --highlight-background: black !important;
+ }
 }

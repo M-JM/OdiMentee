@@ -99,15 +99,20 @@
               </ionic-selectable>
             </ion-item>
             
-            <form class="validations-form" [formGroup]="introForm1" (ngSubmit)="onSubmit()">
+            <form class="validations-form" [formGroup]="introForm" (ngSubmit)="onSubmit()">
             
 
                 <ion-item class="input-item item-label-floating">
                   <ion-label class="my-label" position="stacked">Taal:</ion-label>
-                  <ion-select formControlName="talen" cancelText="Cancel" placeholder='selecteer jouw taal'>
+                  <ion-select required formControlName="talen" cancelText="Cancel" placeholder='selecteer jouw taal'>
                     <ion-select-option *ngFor="let taal of talen" [value]="taal">{{ taal }}</ion-select-option>
                   </ion-select>
                 </ion-item>
+                <div class="divErrors" *ngIf="this.introForm.get('talen').value === '' && this.introForm.get('talen').touched">
+       
+                  <ion-icon name="alert-outline" color='danger'></ion-icon>
+                  <ion-label style="color: red;"> Je moet een taal kiezen</ion-label>
+                </div>
 
 
                 <ion-item class="input-item item-label-floating">
@@ -117,32 +122,49 @@
                     </ion-select-option>
                   </ion-select>
                 </ion-item>
+                <div class="divErrors" *ngIf="this.introForm.get('campusen').value === '' && this.introForm.get('campusen').touched">
+       
+                  <ion-icon name="alert-outline" color='danger'></ion-icon>
+                  <ion-label style="color: red;"> Je moet een campus kiezen</ion-label>
+                </div>
 
                 <ion-item class="input-item ">
                   <ion-label class="my-label" position="stacked">Richting:</ion-label>
-                  <ion-select formControlName="opleidingen" cancelText="Cancel" placeholder='kies een opleiding' okText="OK">
+                  <ion-select aria-required="required" formControlName="opleidingen" cancelText="Cancel" placeholder='kies een opleiding' okText="OK">
                     <ion-select-option *ngFor="let opleiding of opleidingen" [value]="opleiding">{{ opleiding }}
                     </ion-select-option>
                   </ion-select>
                 </ion-item>
+                <div class="divErrors" *ngIf="this.introForm.get('opleidingen').value === '' && this.introForm.get('opleidingen').touched">
+       
+                    <ion-icon name="alert-outline" color='danger'></ion-icon>
+                    <ion-label style="color: red;"> Je moet een opleiding kiezen</ion-label>
+                  </div>
+                 
+                           
 
                 <ion-item class="input-item ">
                   <ion-label class="my-label" position="stacked">Opleidings graad:</ion-label>
-                  <ion-select formControlName="opleidingenGraad" cancelText="Cancel" placeholder='selecteer jouw graad' okText="OK">
+                  <ion-select 
+                   aria-required="required" formControlName="opleidingenGraad" cancelText="Cancel" placeholder='selecteer jouw graad' okText="OK">
                     <ion-select-option *ngFor="let graad of opleidingenGraad" [value]="graad">{{ graad }}
                     </ion-select-option>
                   </ion-select>
                 </ion-item>
-
+                <div class="divErrors" *ngIf="this.introForm.get('opleidingenGraad').value === '' && this.introForm.get('opleidingenGraad').touched">
+       
+                  <ion-icon name="alert-outline" color='danger'></ion-icon>
+                  <ion-label style="color: red;"> Je moet een graad kiezen</ion-label>
+                </div>
                 <ion-item class="input-item">
                   <ion-label  class="my-label" position="stacked">Beschrijving:</ion-label>
-                  <ion-textarea type="text" minlength=1 maxlength=500 rows=3 placeholder="geef een korte beschrijving van jezelf" formControlName="beschrijving">
+                  <ion-textarea required type="text" minlength=1 maxlength=500 rows=3 placeholder="geef een korte beschrijving van jezelf" formControlName="beschrijving">
                   </ion-textarea>
                 </ion-item>
 
 
                 <div class="div3">
-                  <ion-button type="submit" [disabled]="!introForm1.valid" (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+                  <ion-button type="submit" [disabled]="!introForm.valid" (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
                 </div>
                
             </form>

@@ -41,7 +41,6 @@ export class IntroPage implements OnInit {
   opleidingen: Array<string>;
   opleidingenGraad: Array<string>;
   campusen: Array<string>;
-  skills: any;
   tests: any;
   rol: any;
   userId: any;
@@ -52,8 +51,7 @@ export class IntroPage implements OnInit {
   selectedUsers = null;
   obsSkills = new BehaviorSubject<Skill[]>([]);
 
-  introForm1: FormGroup;
-  introForm2: FormGroup;
+  introForm: FormGroup;
   imageUpload: AngularFireUploadTask;
   campus: string[];
 
@@ -87,19 +85,13 @@ export class IntroPage implements OnInit {
 
     this.opleidingenGraad = ['1ste', '2de', '3de', '4de'];
 
-    this.skills = ['C#', 'JAVA', 'SQL', 'Angular', 'Ionic'];
-
-    this.introForm1 = new FormGroup({
+    this.introForm = new FormGroup({
       talen: new FormControl('', Validators.required),
       opleidingen: new FormControl('', Validators.required),
       opleidingenGraad: new FormControl('',Validators.required),
       tests: new FormControl(this.tests),
       campusen: new FormControl('',Validators.required),
       beschrijving: new FormControl('')
-    });
-    this.introForm2 = new FormGroup({
-      skills: new FormControl(this.skills[0]),
-      beschrijving: new FormControl(''),
     });
   }
 
@@ -115,30 +107,31 @@ export class IntroPage implements OnInit {
 
   onSubmit() {
     const profile: Profile = {
-      opleidingsfase: this.introForm1.get('opleidingenGraad').value,
-      opleiding: this.introForm1.get('opleidingen').value,
-      taalvoorkeur: this.introForm1.get('talen').value,
-      beschrijving: this.introForm1.get('beschrijving').value,
-      skills: this.introForm2.get('skills').value,
+      opleidingsfase: this.introForm.get('opleidingenGraad').value,
+      opleiding: this.introForm.get('opleidingen').value,
+      taalvoorkeur: this.introForm.get('talen').value,
+      beschrijving: this.introForm.get('beschrijving').value,
+      skills: this.selectedUsers,
       photo: this.uploadFileName,
-      campus: this.introForm1.get('campusen').value,
+      campus: this.introForm.get('campusen').value,
       role: this.rol,
       userId: this.userId,
     };
-
-    if (!this.introForm1.valid) {
+console.log(profile);
+    if (!this.introForm.valid) {
       console.log('something went wrong');
       return false;
     } else {
-      this.profileService
-        .create(profile)
-        .then(() => {
-          this.authService.hasCompletedIntro(this.userId);
-          this.router.navigate(['/tabs']);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      console.log('ok');
+      // this.profileService
+      //   .create(profile)
+      //   .then(() => {
+      //     this.authService.hasCompletedIntro(this.userId);
+      //     this.router.navigate(['/tabs']);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     }
   }
 
