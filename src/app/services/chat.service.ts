@@ -47,6 +47,7 @@ getChats(id: string, role: string){
       return combineLatest(...res);
     })
   );
+  console.log(finalResult);
 return finalResult;
 }
 

@@ -91,9 +91,26 @@ ion-item{
     width:100%; 
 }
 
+.div4{
+  width: 100%;
+  margin: 5px auto;
+  margin-bottom: 15%;
+}
+.div4 h1{
+  font-family: Open-Sans;
+  font-weight: 600;
+  color: white;
+}
 .container2 {
     width: 250px;
     height: 250px;
+    display: block;
+    margin: 80px auto;
+  }
+
+  .container3 {
+    width: 250px;
+    height: 150px;
     display: block;
     margin: 80px auto;
   }
@@ -130,9 +147,9 @@ ion-item{
   }
 
 
-  $particles: 50;
-$width: 500;
-$height: 500;
+$particles: 40;
+$width: 400;
+$height: 600;
 
 // Create the explosion...
 $box-shadow: ();
@@ -269,3 +286,40 @@ span{
    --highlight-background: black !important;
  }
 }
+.img-box{
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  }
+  .border-white{
+    border: 4px solid white;
+    border-radius: 50%;
+    width: fit-content;
+  }
+  .border-blue{
+    border: 6px solid #006bbf;
+    border-radius: 50%;
+    width: fit-content;
+  }
+
+
+  .wave {
+    animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
+    animation-duration: 3.5s;        /* Change to speed up or slow down */
+    animation-iteration-count: infinite;  /* Never stop waving :) */
+    transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+    display: inline-block;
+  }
+  
+  @keyframes wave-animation {
+      0% { transform: rotate( 0.0deg) }
+     10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+     20% { transform: rotate(-8.0deg) }
+     30% { transform: rotate(14.0deg) }
+     40% { transform: rotate(-4.0deg) }
+     50% { transform: rotate(10.0deg) }
+     60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
+    100% { transform: rotate( 0.0deg) }
+  }
+  

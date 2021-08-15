@@ -27,6 +27,7 @@ export class AuthService {
           return this.db.doc<User>(`users/${user.uid}`).valueChanges().pipe(
             take(1),
             tap(data => {
+              console.log('i filled currentUser');
               data['id'] = user.uid;
               this.currentUser.next(data);
             })
@@ -60,9 +61,12 @@ export class AuthService {
     return from(this.afAuth.signInWithEmailAndPassword(credentials.email, credentials.password)).pipe(
       switchMap(user => {
         if (user) {
-          return this.db.doc(`users/${user.user.uid}`).valueChanges().pipe(
-            take(1)
-          );
+          return this.db.doc<User>(`users/${user.user.uid}`).valueChanges().pipe(
+            take(1),tap(data => {
+              data['id'] = user.user.uid;
+              this.currentUser.next(data);
+            }
+          ));
         } else {
           return of(null);
         }

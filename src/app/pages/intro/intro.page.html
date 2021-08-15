@@ -1,5 +1,5 @@
 <ion-content>
-  <ion-slides pager="true">
+  <ion-slides pager="false" [options]="slideOpts">
     <ion-slide>
       <div class="container" style="height: 100%;">
         <ion-header>
@@ -164,17 +164,12 @@
 
 
                 <div class="div3">
-                  <ion-button type="submit" [disabled]="!introForm.valid" (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+                  <ion-button type="submit" [disabled]="!introForm.valid" fill="outline" expand="block" color="light">Next</ion-button>
                 </div>
                
             </form>
           </div>
 
-
-<!--        
-          <div class="div3">
-            <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
-          </div> -->
        
         </div>
       
@@ -187,13 +182,34 @@
         <div class="container" style="height: 100%;">
           <ion-header>
             <ion-toolbar color="primary">
-              <ion-title>Profiel instellen (3/4)</ion-title>
+              <ion-title>Profiel instellen (3/3)</ion-title>
             </ion-toolbar>
           </ion-header>
+          <div class="div4">
+            <h1>Kies of neem een profiel photo</h1>
+          </div>
           <!-- //https://gamiparesh5.medium.com/whatsapp-style-profile-picture-selection-modal-using-an-ionic-capacitor-with-core-camera-and-2a9c470ed36b -->
           <div class="container2">
-            <div class="outer"
-              [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+            <div  *ngIf="photo === './assets/imgs/profile.jpg'" class="outer">
+              <div class="border-blue">
+                <div class="border-white">
+                  <div class="img-box">
+                  <ion-img [src]="photo"></ion-img>  
+                  </div>
+                </div>
+              </div>
+                  <div class="inner" (click)="openOptionSelection()">
+                     <ion-icon name="camera" class="camera-icon"></ion-icon>
+                  </div>
+               </div>
+            <div  *ngIf="photo !== './assets/imgs/profile.jpg'" class="outer">
+            <div class="border-blue">
+              <div class="border-white">
+                <div class="img-box">
+                <ion-img [src]="photo"></ion-img>  
+                </div>
+              </div>
+            </div>
                 <div class="inner" (click)="openOptionSelection()">
                    <ion-icon name="camera" class="camera-icon"></ion-icon>
                 </div>
@@ -201,7 +217,7 @@
           </div>
     
           <div class="div3">
-            <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button>
+            <ion-button (click)="finish()" fill="outline" expand="block" color="light">Finish</ion-button>
           </div>
         </div>
   
@@ -215,39 +231,34 @@
 
     <ion-slide>
       <ion-content padding>
-        <!-- <p>test</p>
-        <form class="validations-form" [formGroup]="introForm2" (ngSubmit)="onSubmit2()">
-
-          <ion-item class="input-item item-label-floating">
-            <ion-label position="floating">Beschrijving</ion-label>
-            <ion-input type="text" placeholder="geef een korte beschrijving van jezelf" formControlName="beschrijving">
-            </ion-input>
-          </ion-item>
-
-          <ion-item class="input-item item-label-floating">
-            <ion-label position="floating">skills</ion-label>
-            <ion-select multiple="true" formControlName="skills">
-              <ion-select-option *ngFor="let skill of skills" [value]="skill">{{ skill }}</ion-select-option>
-            </ion-select>
-          </ion-item>
-
-
-          <ion-button class="submit-btn" type="submit" expand="block" fill="outline"
-            [disabled]="!introForm2.valid || !introForm2.valid">Submit</ion-button>
-        </form>
-        <ion-button (click)="next()" fill="outline" expand="block" color="light">Next</ion-button> -->
+      
         <div class="container" style="height: 100%;">
           <ion-header>
             <ion-toolbar color="primary">
-              <ion-title>Profiel instellen (4/4)</ion-title>
+              <ion-title>Profiel ingesteld</ion-title>
             </ion-toolbar>
           </ion-header>
+          <div class="div4">
+            <h1>Welkom bij OdiMentee</h1>
+          </div>
+          
+          <div class="container3">
+      
+                  <div class="img-box">
+                  <ion-img src="./assets/imgs/Logo.png"></ion-img>  
+      
+        </div>
+      </div>
+
+
+
           <div class="div2">
             <div class="pyro">
               <div class="before"></div>
               <div class="after"></div>
               <div>
                 <p>Jouw profiel is nu ingesteld</p>
+                <span class="wave" style="font-size: xx-large;">👋</span>
               </div>
             </div>
           </div>
