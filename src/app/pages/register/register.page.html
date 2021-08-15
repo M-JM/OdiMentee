@@ -8,33 +8,39 @@
 </ion-header>
 
 <ion-content padding>
+  <div class="logo">
+    <h1>OdiMentee</h1>
+    <ion-icon color="light" name="infinite-outline"></ion-icon>
+  </div>
+  <div class="padding-form">
 <form [formGroup]="registerForm" (ngSubmit)="register()">
 
-  <ion-item lines="none">
-    <ion-label position="stacked">Email</ion-label>
+  <ion-item >
+    <ion-label  color="light"  position="stacked">Email</ion-label>
     <ion-input type="email" placeholder="jan.janssens@odisee.be" formControlName="email"></ion-input>
   </ion-item>
 
-  <ion-item lines="none">
-    <ion-label position="stacked">voornaam</ion-label>
+  <ion-item >
+    <ion-label  color="light"  position="stacked">voornaam</ion-label>
     <ion-input placeholder="Jan" formControlName="firstName"></ion-input>
   </ion-item>
 
-  <ion-item lines="none">
-    <ion-label position="stacked">familienaam</ion-label>
+  <ion-item >
+    <ion-label  color="light"  position="stacked">familienaam</ion-label>
     <ion-input placeholder="Jannsens" formControlName="lastName"></ion-input>
   </ion-item>
 
-  <ion-item lines="none">
-    <ion-label position="stacked">Password</ion-label>
-    <ion-input type="password" formControlName="password"></ion-input>
+  <ion-item >
+    <ion-label  color="light" position="stacked">Password</ion-label>
+    <ion-input type="password" placeholder="password" formControlName="password"></ion-input>
   </ion-item>
 
 
-  <ion-button expand="block" type="submit" class="ion-padding-horizontal ion-margin-vertical"
+  <ion-button  shape="round" expand="block" type="submit" class="ion-padding-horizontal ion-margin-vertical"
   color="primary" [disabled]="!registerForm.valid">
 <ion-icon name="checkmark" slot="end"></ion-icon>
 Register
 </ion-button>
 </form>
+</div>
 </ion-content>

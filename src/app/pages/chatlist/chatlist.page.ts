@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chatlist.page.scss'],
 })
 export class ChatlistPage implements OnInit {
-  chats: any;
+  chats: any = [];
   showSpinner = true;
 
   constructor(private profileservice: ProfileService, private chatservice: ChatService) { }
@@ -42,7 +42,6 @@ this.showSpinner = false;
         },
         () => {
           console.log('no error');
-          this.chats = [];
           this.showSpinner = false;
         }
       );
