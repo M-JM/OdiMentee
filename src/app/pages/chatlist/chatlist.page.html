@@ -6,6 +6,9 @@
 
 <ion-content>
   <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+  <div class="titles">
+    <h1>Gesprekken</h1>
+  </div>
   <div *ngIf="(chats)?.length > 0">
     <ion-item *ngFor="let chat of chats" [routerLink]="['/chat',chat.id]" tappable>
       <ion-avatar slot="start" >
@@ -20,9 +23,11 @@
     </ion-item>
   </div>
   <div *ngIf="(chats)?.length === 0">
-    <div class='noMessages'>
-      <img src="/assets/imgs/mailbox.png">
-     </div>
+<div class='noMessages'>
+  <h1>geen gesprekken</h1>
+  <img src="/assets/imgs/NoChats.png">
+  
+ </div>
   </div>
 
 </ion-content>

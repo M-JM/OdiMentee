@@ -33,6 +33,15 @@ getAllInvitations(id: string){
   );
 }
 
+getAllMentorships(id: string){
+  return this.db.collection(`invitations`, ref =>ref.where('mentor','==',id).where('status','==','accepted'))
+  .valueChanges({idField: 'id'})
+  .pipe(
+    leftJoinDocument(this.db,'mentee','profiles'),
+    shareReplay(1)
+  );
+}
+
 update(id: string, invitation: Invitation){
     return this.db.collection('invitations').doc(id).update(invitation);
   }

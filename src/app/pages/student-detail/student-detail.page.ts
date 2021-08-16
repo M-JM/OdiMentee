@@ -19,8 +19,11 @@ export class StudentDetailPage implements OnInit {
   opleiding: any;
   taalvoorkeur: any;
   userImage: any;
+  campus: any;
+  opleidingsgraad: any;
   naam: any;
   alreadySent: any;
+  skills: any;
   private _entityId: any;
 
   constructor(private profileService: ProfileService,
@@ -37,7 +40,10 @@ export class StudentDetailPage implements OnInit {
         this.opleiding = data['opleiding'];
         this.taalvoorkeur = data['taalvoorkeur'];
         this.userImage = data['photo'];
+        this.campus = data['campus'];
         this.naam = data['naam'];
+        this.opleidingsgraad=data['opleidingsfase'];
+        this.skills=data['skills'];
      });
      this.profileService.getid().then(res => {
       this.checkInv(res,this._entityId);

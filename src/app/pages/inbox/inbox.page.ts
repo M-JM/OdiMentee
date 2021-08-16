@@ -11,7 +11,9 @@ import { InvitationReplyModalPage } from '../invitation-reply-modal/invitation-r
   styleUrls: ['./inbox.page.scss'],
 })
 export class InboxPage implements OnInit {
-  invitations: any[];
+  invitations: any[] ;
+  mentorships: any[] ;
+  showSpinner = true;
 
   constructor(
     private profileService: ProfileService,
@@ -20,13 +22,7 @@ export class InboxPage implements OnInit {
     private modalCtrl: ModalController) { }
 
   ngOnInit() {
-    this.profileService.getid().then(res => {
-      this.invitationService.getAllInvitations(res).subscribe( result => {
-        this.invitations = result as Array<any>;
-        console.log('myresult',result);
-        console.log(this.invitations);
-      });
-    });
+  this.getData();
   }
 
   async openInvitation(id: string, mentor: string,mentee: string){
@@ -40,6 +36,23 @@ export class InboxPage implements OnInit {
   cssClass: 'invitation-reply-modal'
     });
     await modal.present();
+  }
+
+  getData(){
+    this.profileService.getid().then(res => {
+      this.invitationService.getAllInvitations(res).subscribe( result => {
+        this.invitations = result as Array<any>;
+        console.log('myresult',result);
+        console.log(this.invitations);
+      });
+      this.invitationService.getAllMentorships(res).subscribe( result => {
+        this.mentorships = result as Array<any>;
+        console.log('myresult2',result);
+      });
+    }).finally( () => {
+      this.showSpinner = false;
+    }
+    );
   }
 
 }

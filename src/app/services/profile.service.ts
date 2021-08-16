@@ -34,7 +34,7 @@ getProfileAsObservable(userId: string){
 
 
 getProfiles(){
-  return this.db.collection('profiles').valueChanges();
+  return this.db.collection(`profiles`, ref =>ref.where('role','==','mentor')).valueChanges();
   //.pipe(take(1)) as Observable<Profile[]>
 }
 

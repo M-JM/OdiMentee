@@ -4,7 +4,79 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content style="width: 100%">
+  <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+  <div class="titles">
+    <h1>Aanvragen</h1>
+  </div>
+
+  <div *ngIf="(invitations)?.length === 0" class='noMessages'>
+    <h1>geen aanvragen</h1>
+    <img src="/assets/imgs/mailbox.png">
+    
+   </div>
+
+  <div *ngIf="(invitations)?.length > 0">
+    <ion-item *ngFor="let invitation of invitations" (click)='openInvitation(invitation.id, invitation.mentor, invitation.mentee.userId)' >
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2"  style="text-align: center" >
+            <ion-avatar style="background: #f2f2f2; margin-right: 5px;">
+              <ion-img [src]="invitation.mentee.photo"></ion-img>
+            </ion-avatar>
+          </ion-col>
+         <ion-col style="margin-left: 0px;" size="10">
+          <ion-label>
+            <h2 style="margin-left: 5px; word-wrap: normal;" >
+              {{invitation.mentee.naam}}
+            </h2>
+            <p class="text">
+              {{invitation.verzoektekst}}
+            </p>
+          </ion-label>
+         </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </div>
+
+  <div   class="titles">
+    <h1>Lopende mentorships</h1>
+  </div>
+
+ <div  *ngIf="(mentorships)?.length > 0">
+  <ion-item *ngFor="let mentorship of mentorships" (click)='openInvitation(mentorship.id, mentorship.mentor, mentorship.mentee.userId)' >
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2"  style="text-align: center" >
+          <ion-avatar style="background: #f2f2f2; margin-right: 5px;">
+            <ion-img [src]="mentorship.mentee.photo"></ion-img>
+          </ion-avatar>
+        </ion-col>
+        <ion-col style="margin-left: 0px;" size="10">
+        <ion-label>
+          <h2 style="margin-left: 5px; word-wrap: normal;" >
+            {{mentorship.mentee.naam}}
+          </h2>
+          <p class="text">
+            {{mentorship.verzoektekst}}
+          </p>
+        </ion-label>
+       </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+ </div>
+
+ <div *ngIf="(mentorships)?.length === 0" class='noMessages'>
+  <h1>geen mentorships</h1>
+  <img src="/assets/imgs/empty.png">
+  
+ </div>
+
+</ion-content>
+
+<!-- <ion-content padding>
   
   <ion-card>
     <ion-card-header>
@@ -45,4 +117,4 @@
     </div>
    </div>
  
-</ion-content>
+</ion-content> -->

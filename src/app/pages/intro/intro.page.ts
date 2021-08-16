@@ -103,8 +103,15 @@ export class IntroPage implements OnInit {
     });
   }
 
+  customPopoverOptions: any = {
+    showBackdrop: false,
+    backdropDismiss: true,
+    translucent: false,
+    mode: 'md'
+  };
+
   slideOpts = {
-    initialSlide: 3,
+    initialSlide: 0,
     speed: 600,
     allowTouchMove:false
   };

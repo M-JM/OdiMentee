@@ -104,7 +104,7 @@
 
                 <ion-item class="input-item item-label-floating">
                   <ion-label class="my-label" position="stacked">Taal:</ion-label>
-                  <ion-select required formControlName="talen" cancelText="Cancel" placeholder='selecteer jouw taal'>
+                  <ion-select [interfaceOptions]="customPopoverOptions" required formControlName="talen" cancelText="Cancel" placeholder='selecteer jouw taal'>
                     <ion-select-option *ngFor="let taal of talen" [value]="taal">{{ taal }}</ion-select-option>
                   </ion-select>
                 </ion-item>
@@ -117,7 +117,7 @@
 
                 <ion-item class="input-item item-label-floating">
                   <ion-label class="my-label" position="stacked">Campus:</ion-label>
-                  <ion-select formControlName="campusen" cancelText="Cancel" placeholder='kies jouw campus' okText="OK">
+                  <ion-select [interfaceOptions]="customPopoverOptions" formControlName="campusen" cancelText="Cancel" placeholder='kies jouw campus' okText="OK">
                     <ion-select-option *ngFor="let campus of campusen" [value]="campus">{{ campus }}
                     </ion-select-option>
                   </ion-select>
@@ -158,7 +158,7 @@
                 </div>
                 <ion-item class="input-item">
                   <ion-label  class="my-label" position="stacked">Beschrijving:</ion-label>
-                  <ion-textarea required type="text" minlength=1 maxlength=500 rows=3 placeholder="geef een korte beschrijving van jezelf" formControlName="beschrijving">
+                  <ion-textarea required type="text" mode='md' minlength=1 maxlength=500 rows=3 placeholder="geef een korte beschrijving van jezelf" formControlName="beschrijving">
                   </ion-textarea>
                 </ion-item>
 

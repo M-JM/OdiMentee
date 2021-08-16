@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { InboxPageRoutingModule } from './inbox-routing.module';
 
 import { InboxPage } from './inbox.page';
+import { LoadingSpinnerComponent } from 'src/app/ui/loading-spinner/loading-spinner.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { InboxPage } from './inbox.page';
     IonicModule,
     InboxPageRoutingModule
   ],
-  declarations: [InboxPage]
+  declarations: [InboxPage,LoadingSpinnerComponent]
 })
 export class InboxPageModule {}
