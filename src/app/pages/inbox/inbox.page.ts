@@ -25,13 +25,14 @@ export class InboxPage implements OnInit {
   this.getData();
   }
 
-  async openInvitation(id: string, mentor: string,mentee: string){
+  async openInvitation(id: string, mentor: string,mentee: string, inhoud: string){
   const modal = await this.modalCtrl.create({
   component:InvitationReplyModalPage,
   componentProps: {
   invitationId: id,
   mentee,
-  mentor
+  mentor,
+  inhoud
   },
   cssClass: 'invitation-reply-modal'
     });

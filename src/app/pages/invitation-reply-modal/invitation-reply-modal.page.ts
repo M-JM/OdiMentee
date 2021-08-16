@@ -16,6 +16,7 @@ export class InvitationReplyModalPage implements OnInit {
   invitationId: any;
   mentor: any;
   mentee: any;
+  inhoud: any;
   replyForm: FormGroup;
   constructor(
     private modalCtrl: ModalController,

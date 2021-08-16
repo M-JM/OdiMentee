@@ -54,8 +54,8 @@ export class LoginPage implements OnInit {
       async err => {
         loading.dismiss();
         const alert = await this.alertControl.create({
-          header: 'Error',
-          message: err.message,
+          header: 'ongeldige login pogin',
+          message: 'Fout opgetreden in username/wachtwoord',
           buttons: ['OK']
         });
         alert.present();

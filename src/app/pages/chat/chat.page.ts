@@ -35,6 +35,7 @@ showSpinner = true;
   this.route.paramMap.subscribe((params: ParamMap) => {
     this.chatId = params.get('id');
     this.chatservice.getChatMessages(this.chatId).subscribe( data => {
+      console.log(data);
       this.chat = data;
       this.authService.getUid().then(res => {
         this.currentUserId = res;

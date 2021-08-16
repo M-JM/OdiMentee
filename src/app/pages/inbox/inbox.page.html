@@ -17,7 +17,8 @@
    </div>
 
   <div *ngIf="(invitations)?.length > 0">
-    <ion-item *ngFor="let invitation of invitations" (click)='openInvitation(invitation.id, invitation.mentor, invitation.mentee.userId)' >
+    <ion-item *ngFor="let invitation of invitations"
+     (click)='openInvitation(invitation.id, invitation.mentor, invitation.mentee.userId, invitation.verzoektekst)' >
       <ion-grid>
         <ion-row>
           <ion-col size="2"  style="text-align: center" >
@@ -45,7 +46,7 @@
   </div>
 
  <div  *ngIf="(mentorships)?.length > 0">
-  <ion-item *ngFor="let mentorship of mentorships" (click)='openInvitation(mentorship.id, mentorship.mentor, mentorship.mentee.userId)' >
+  <ion-item *ngFor="let mentorship of mentorships" (click)='openInvitation(mentorship.id, mentorship.mentor, mentorship.mentee.userId,mentorship.verzoektekst)' >
     <ion-grid>
       <ion-row>
         <ion-col size="2"  style="text-align: center" >
