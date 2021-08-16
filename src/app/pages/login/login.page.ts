@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, ToastController, LoadingController, IonSpinner } from '@ionic/angular';
@@ -10,7 +10,7 @@ import { User } from 'src/app/services/user.model';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, AfterViewInit {
   loginForm: FormGroup;
   constructor(private fb: FormBuilder,
     private auth: AuthService,
@@ -25,6 +25,12 @@ export class LoginPage implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
+
+  ngAfterViewInit(){
+    this.loginForm.reset();
+  }
+
+
   async login() {
     const loading = await this.loadingControl.create({
       message: 'Loading...',
@@ -46,12 +52,15 @@ export class LoginPage implements OnInit {
           role: user.role
         });
         if (role === 'USER') {
+          this.loginForm.reset();
           this.router.navigateByUrl('/tabs');
         } else if (role === 'ADMIN') {
+          this.loginForm.reset();
           this.router.navigateByUrl('/admin');
         }
       },
       async err => {
+        this.loginForm.reset();
         loading.dismiss();
         const alert = await this.alertControl.create({
           header: 'ongeldige login pogin',

@@ -4,6 +4,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { InvitationModalPage } from '../invitation-modal/invitation-modal.page';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 
@@ -26,7 +27,7 @@ export class ProfilePage implements OnInit {
   naam: any;
   skills: any;
 
-  constructor(private profileService: ProfileService, private modalCtrl: ModalController) { }
+  constructor(private profileService: ProfileService, private modalCtrl: ModalController, private auth: AuthService) { }
 
   ngOnInit() {
 this.profileService.getid().then(
@@ -44,7 +45,9 @@ this.profileService.getid().then(
   });
 
 }
-
+logout(){
+  this.auth.signOut();
+}
 
 
 }

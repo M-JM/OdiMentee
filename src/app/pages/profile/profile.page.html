@@ -4,8 +4,11 @@
     <ion-title style='text-align: center;'>jouw profiel
      
     </ion-title>
-    <ion-buttons slot='end'style="padding-right: 8px;" >
+    <ion-buttons slot='start'style="padding-left: 8px;" >
       <ion-icon class="ion-icon-edit" name="create-outline"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot='end'style="padding-right: 8px;" >
+      <ion-icon class="ion-icon-edit" name="log-out-outline" (click) ='logout()' ></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -81,7 +84,7 @@
 
   <ion-item lines="none">
     <ion-label text-wrap>
-      <ion-chip *ngFor="let skill of skills | slice:0:10 " disabled='true' size='small' mode='md'>
+      <ion-chip *ngFor="let skill of skills | slice:0:10 " size='small' mode='md'>
         <ion-label color="primary">{{skill}}</ion-label>
       </ion-chip>
     </ion-label>
